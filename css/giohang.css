@@ -1,0 +1,123 @@
+main {
+    padding: 0px 100px;
+}
+.container {
+    width: 100%;
+    margin: 50px auto;
+    min-height: 500px;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 30px;
+}
+.cart, .checkout {
+    border: 1px solid var(--gray);
+    background-color: white;
+    border-radius: 10px;
+}
+.cart, .checkout, .cart table {
+    width: 100%;
+}
+.cart table {
+    border-collapse: collapse;
+}
+.cart table td, .cart table th {
+    padding: 10px;
+    text-align: center;
+}
+.cart table tr:first-child {
+    height: 50px;
+}
+.cart table tr:not(:last-child) {
+    border-bottom: 1px solid var(--gray);
+}
+.cart table tr {
+    height: 100px;
+}
+.cart table td:nth-child(1) {
+    width: 5%;
+}
+.cart table td:nth-child(2) {
+    width: 10%;
+}.cart table td:nth-child(3) {
+    width: 40%;
+}.cart table td:nth-child(4) {
+    width: 25%;
+}.cart table td:nth-child(5) {
+    width: 20%;
+}
+.cart .product-image img{
+    width: 100px;
+    height: 100px;
+}
+.product-buttons>*:not(:nth-child(2)) {
+    background-color: var(--red);
+    border-radius: 5px;
+}
+.product-buttons>* {
+    margin: auto 0px;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-block;
+    width: 25px;
+    text-align: center;
+}
+.product-quantity {
+    margin: 0px 5px;
+}
+.product-name {
+    font-size: 18px;
+    text-align: left !important;
+}
+.product-original-price {
+    text-decoration: line-through;
+    color: var(--gray);
+    font-size: 15px;
+}
+.product-price {
+    font-weight: bold;
+    font-size: 18px;
+}
+.checkout {
+    height: fit-content;
+    width: 100%;
+    overflow: hidden;
+}
+.checkout .title {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    background-color: var(--red);
+    text-align: center;
+    color: var(--black);
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+.checkout>div:not(:first-child) {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    
+    padding: 10px;
+}
+.checkout>div:nth-child(2)>p {
+    margin: 10px 0px;
+}
+.checkout>div:nth-child(2)>p:nth-child(even), .checkout>div:nth-child(3)>p:nth-child(2) {
+    text-align: right;
+    font-weight: bold;
+}
+.cart-total-discount {
+    color: var(--red);
+}
+.checkout>div:nth-child(3)>p:nth-child(3) {
+    grid-column: 1 / 3;
+    text-align: center;
+    width: 90%;
+    margin: 20px auto 0px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--red);
+    color: white;
+    font-weight: bold;
+}

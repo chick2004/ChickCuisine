@@ -1,0 +1,92 @@
+header {
+    position: fixed;
+    width: 100%;
+    border-bottom: 1px solid var(--gray);
+    display: grid;
+    grid-template-columns: 200px 50px auto;
+}
+header * {
+    
+}
+.logo {
+    
+    height: 70px;
+    border-bottom: 1px solid var(--gray);
+    background: linear-gradient(267deg, var(--red) 1.51%, var(--yellow) 97.91%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header .logo>img {
+    width: 150px;
+    height: auto;
+    border: unset;
+}
+header .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header .right {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+}
+header .right>* {
+    margin: 0px 20px;
+}
+header .right .avt {
+    border-radius: 50%;
+}
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    border-right: 1px solid var(--gray);
+    background-color: white;
+    position: fixed;
+    top: 70px;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.sidebar ul li {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 5px 10px 10px;
+    color: var(--lightblack);
+}
+.sidebar ul li:hover {
+    cursor: pointer;
+    background-color: rgb(245, 245, 245);
+}
+
+.sidebar ul li svg {
+    margin-right: 10px;
+}
+.sidebar ul li svg path {
+    
+    fill: var(--lightblack);
+}
+.topbar {
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid var(--gray);
+}
+main {
+    position: absolute;
+    left: 200px;
+    top: 70px;
+    padding: 15px;
+    width: calc(100% - 200px);
+    display: block;
+}
+.sidebar .selected {
+    border-left: 2px solid var(--red);
+}
+.sidebar .selected span, .sidebar .selected svg path{
+    color: var(--red);
+    fill: var(--red);
+}

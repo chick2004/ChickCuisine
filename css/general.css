@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "MS Sans Serif";
+    src: url(font/Microsoft.ttf) format("truetype");
+  }
+@font-face {
+  font-family: "BR Sans Serif";
+  src: url(font/BadScript.ttf) format("truetype");
+}
+:root {
+    --red: #c34439;
+    --lightgray: #faf9f8;
+    --black: #202020;
+    --lightblack: #4E4E4E;
+    --gray: #BDBDBD;
+    --yellow: #FFB11B;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  color: var(--black);
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--lightgray);
+}
+.a {
+  text-decoration: none;
+}

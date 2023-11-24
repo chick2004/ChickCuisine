@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChickCuisine</title>
+</head>
+<!-- css global -->
+<style>
+    :root {
+        --red: #c34439;
+        --black: #202020;
+        --lightblack: #4E4E4E;
+        --gray: #BDBDBD;
+        --lightgray: #faf9f8;
+        --yellow: #FFB11B;
+    }
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        color: var(--black);
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--lightgray);
+        
+        color: var(--lightblack);
+    }
+    a {
+        text-decoration: none;
+    }
+    /* Đường gạch ngang */
+    .line {
+        border-bottom: 1px solid var(--gray);
+        width: 100%;
+        margin: 10px auto;
+    }
+    .whitediv {
+        background-color: white;
+        border: 1px solid var(--gray);
+        box-shadow: 0px 0px 5px var(--gray);
+        border-radius: 10px;
+            overflow: hidden;
+    }
+    
+</style>
+<!-- css header footer --> 
+<style>
+    header {
+        width: 100%;
+        padding: 10px 100px;
+        background-color: #171717;
+        display: inline-grid;
+        grid-template-columns: 2fr 350px 4fr 1fr 137px;
+        gap: 10px;
+        justify-content: space-around;
+        align-items: center;
+    }
+    header>* {
+        text-align: center;
+    }
+    header * {
+        font-size: 18px;
+    }
+    header .logo {
+        width: 193px;
+    }
+    header .menu {
+        display: flex;
+        justify-content: space-around;
+        padding-left: 20px;
+    }
+    header .menu a {
+        color: white;
+        margin-right: 20px;
+    }
+    header .search-box {
+        border: 1px solid var(--gray);
+        padding: 5px 0px 5px 10px;
+        height: 42px;
+        border-radius: 21px;
+        width: 100%;
+        min-width: 150px;
+        text-align: left;
+    }
+    header .search-box>* {
+        margin: auto;
+        vertical-align: middle;
+    }
+    header .search-box input {
+        outline: none;
+        border: none;
+        background-color: unset;
+        color: white;
+        width: 80%;
+    }
+    header .search-box input::placeholder {
+        color: white;
+    }
+    header .cart {
+        text-align: right;
+        padding-right: 20px;
+    }
+    header .cart img {
+        height: fit-content;
+    }
+    header .account {
+        text-align: center;
+        background-color: var(--red);
+        padding: 5px;
+        border-radius: 5px;
+        width: 137px;
+    }
+    header .account:hover {
+        transform: scale(1.1);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    header .account>* {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0px 5px;
+        color: white;
+    }
+    @media screen and (max-width: 720px){
+        header{
+            padding: 10px 25px 0px 25px !important;
+        }
+        header .menu {
+            display: block;
+        }
+
+        footer{
+            padding: 10px 25px  !important;
+        } 
+        footer .gallery{
+             height: 50%;
+             width: 100%; 
+             left: 1.5% !important;
+        }
+        footer .gallery img{
+            width: 100% !important;
+        }
+        footer .gallery img:nth-child(3),
+        footer .gallery img:nth-child(4){
+            display: none;
+        }
+        footer .about{
+            margin: 80% auto 100px !important;
+        }
+        footer .about >*{
+            display: none;
+            
+        }
+        .footer-menu {
+            position: absolute !important;
+            top: 0;
+        }
+        footer .footer-menu a{
+            display: none;
+        }
+        footer .iconmenu {
+            display: block !important;
+            margin-top: 5%;
+        }
+        footer .logo-footer img{
+            width: 89px !important;
+            /* height: 34px; */
+        }
+        footer .more-info ul li:nth-child(1){
+            align-content: end;
+        }
+        /* footer .more-info ul li:nth-child(2),li:nth-child(3){
+            display: none !important; 
+        } */
+    }
+    footer {
+        width: 100%;
+        margin-top: 200px;
+        background-image: url('/content/image/background-footer.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        padding: 10px 100px 50px;
+        
+    }
+    footer .gallery {
+        position: absolute;
+        top: 0px; 
+        left:9.3%;
+        z-index: 1;
+        display: flex;
+        justify-content: space-around;
+    }
+    footer .gallery img {
+        border-radius: 10px;
+        height: fit-content;
+        margin-right:3%
+        
+    }
+    footer .about {
+        color: var(--lightgray);
+        font-size: 20px;
+        width: 100%;
+        margin: 500px auto 100px;
+        text-align: center;
+    }
+    footer .menu-box {
+        border: 1px solid white;
+        position: relative;
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+    }
+    footer .logo-footer {
+        width: 150px;
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        backdrop-filter: blur(50px);
+    }
+    footer .footer-menu {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    footer .footer-menu a {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        margin: 0px 10px;
+    }
+    footer .social-icons {
+        vertical-align: middle;
+        text-align: right;
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+    footer .social-icons>img {
+        margin: 0px 5px;
+        width: 30px;
+    }
+    footer .footer-line {
+        grid-row: 2 / 3;
+        grid-column: 1 / 3;
+    }
+    footer .more-info {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+        text-align: right;
+    }
+    footer .more-info ul li {
+        color: white;
+        display: inline-block;
+        margin: 0px 20px;
+    }
+    
+
+</style>
+<!-- css trang -->
+<style>
+    .view-more {
+        display: flex;
+        width: 75%;
+        margin: 10px auto;
+        justify-content: end;
+        padding: 5px;
+    }
+    .view-more>p {
+        color: var(--red);
+        font-size: 15px;
+        font-weight: bold;
+        width: fit-content;
+        margin-right: 10px;
+    }
+    .view-more>img {
+        width: 20px;
+        height: fit-content;
+    }
+    .banner {
+        position: relative;
+        height: 500px;
+    }
+    .banner img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px 0px 10px 10px;
+    }
+    .special-text {
+        font-family: "BR Sans Serif";
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translate(-50%, 0px);
+        z-index: 1;
+        color: white;
+        font-size: 35px;
+        font-weight: bold;
+        text-shadow: 0px 0px 5px black;
+    }
+    .banner>.order-button {
+        bottom: 50px;
+        left: 50%;
+        transform: translate(-50%, 0px);
+        position: absolute;
+        color: white;
+        border: 1px solid white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-shadow: 0px 0px 5px black;
+        cursor: pointer;
+    }
+    .hot-categories {
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid var(--gray);
+        margin: 50px auto;
+        width: 1100px;
+        display: flex;
+        justify-content: space-around;
+        box-shadow: 2px 2px 2px var(--gray);
+    }
+    .hot-categories p {
+        padding: 8px 10px;
+        margin: 8px;
+        border-radius: 5px;
+    }
+    .hot-categories .selected-hot-categories {
+        background-color: var(--red);
+    }
+    .container {
+        padding: 10px 100px;
+    }
+    .title {
+        text-align: center;
+        color: var(--red);
+        font-weight: bold;
+        font-size: 25px;
+    }
+    .div-description {
+        text-align: center;
+        color: var(--lightblack);
+        font-size: 20px;
+    }
+    .products {
+        margin: 20px 0px;
+    }
+    .flex {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .product {
+        padding: 10px;
+        margin: 20px;
+        border: 1px solid var(--gray);
+        border-radius: 5px;
+        width: 250px;
+        display: grid;
+        position: relative;
+        gap: 10px 0px;
+        grid-template-columns: auto auto;
+        box-shadow: 2px 2px 5px var(--gray);
+        cursor: pointer;
+    }
+    .product-image {
+        margin: 20px 0px 10px;
+        width: 100px;
+        justify-self: center;
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+    }
+    .product-image:hover {
+        transform: scale(1.1);
+        transition: 0.5s;
+    }
+    .product-rating {
+        font-size: 20px;
+        color: gold;
+        text-shadow: 1px 1px 1px orange;
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+    }
+    .product-name {
+        font-size: 20px;
+        color: var(--black);
+        font-weight: 600;
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+    }
+    .product-short-description {
+        font-size: 15px;
+        color: var(--lightblack);
+        grid-column: 1 / 3;
+        grid-row: 4 / 5;
+    }
+    .product-original-price {
+        font-size: 18px;
+        text-decoration: line-through;
+        color: #BDBDBD;
+        grid-column: 1 / 3;
+        grid-row: 5 / 6;
+    }
+    .product-price {
+        font-size: 20px;
+        color: var(--black);
+        grid-row: 6 / 7;
+        grid-column: 1 / 2;
+        margin: auto 0px;
+        font-weight: 600;
+    }
+    .product-buttons {
+        text-align: right;
+        grid-row: 6 / 7;
+        grid-column: 2 / 3;
+        margin: auto 0px;
+    }
+    .product-buttons img {
+        display: inline-block;
+        padding: 5px;
+        width: 30px;
+        border-radius: 5px;
+    }
+    .product-buttons .product-button-cart {
+        background-color: var(--red);
+    }
+    .product-buttons .product-button-share {
+        background-color: var(--black);
+    }
+    .product-discount-tag {
+        position: absolute;
+        right: 20px;
+        top: -20px;
+    }
+    .discount-tag {
+        position: relative;
+    }
+    .discount-percentage {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: bold;
+    }
+    .categories {
+        width: 1000px;
+        margin: auto;
+    }
+    .category {
+        display: grid;
+        grid-template-columns: 75px auto;
+        width: 230px;
+        height: 75px;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--gray);
+        padding-right: 20px;
+        margin: 20px;
+    }
+    .category .image-box {
+        background-color: var(--red);
+    }
+    .category .image-box img {
+        width: 75px;
+        height: 75px;
+    }
+    .category .text-box {
+        justify-self: right;
+        margin: auto 0px;
+    }
+    .category-name {
+        font-size: 20px;
+    }
+    .category-product-count {
+        font-size: 15px;
+    }
+</style>
+<body>
+    <header>
+        <img src="/content/image/horizontal-logo-red.png" alt="" class="logo">
+        <img src="/content/image/logo-red.png" alt="" class="logo" style="display: none;">
+        <div class="menu">
+            <a href="">Trang chủ</a>
+            <a href="">Thực đơn</a>
+            <a href="">Giới thiệu</a>
+        </div>
+        <div class="search-box">
+            <img src="/content/image/icon/search.png" alt="">
+            <input type="text" placeholder="Tìm món">
+        </div>
+        <a href="" class="cart">
+            <img src="/content/image/icon/cart.png" alt="">
+        </a>
+        <div class="account">
+            <img src="/content/image/icon/user.png" alt="">
+            <p>Tài khoản</p>
+        </div>
+    </header>
+    
+    <footer>
+        <div class="gallery">
+            <img style="margin-top: -100px;" src="/content/image/footer-image (1).png" alt="">
+            <img style="margin-top: -25px;" src="/content/image/footer-image (2).png" alt="">
+            <img style="margin-top: -50px;" src="/content/image/footer-image (3).png" alt="">
+            <img style="margin-top: -75px;" src="/content/image/footer-image (4).png" alt="">
+            <img style="margin-top: -50px;" src="/content/image/footer-image (5).png" alt="">
+        </div>
+        <div class="about">
+            <p style="color: whi;">ChickCuisine tự hào cung cấp những món ăn ngon nhất từ khắp nơi trên thế giới đến ngay tận bàn ăn của bạn. Chúng tôi cam kết về chất lượng và sự hài lòng của khách hàng. Hãy theo dõi chúng tôi trên các trang mạng xã hội để cập nhật thông tin mới nhất và các ưu đãi đặc biệt!</p>
+        </div>
+        <div class="menu-box">
+            <img class="logo-footer" src="/content/image/logo-white.png" alt="">
+            
+            <div class="footer-menu">
+                <div class="iconmenu" style="display: none;"><img src="/content/image/icon/more.png" alt=""></div>
+                <a href="">Trang chủ</a>
+                <a href="">Thực đơn</a>
+                <a href="">Giới thiệu</a>
+            </div>
+            <div class="social-icons">
+                <img src="/content/image/icon/Vector.png" alt="">
+                <img src="/content/image/icon/Vector-1.png" alt="">
+                <img src="/content/image/icon/Vector-2.png" alt="">
+                <img src="/content/image/icon/Vector-3.png" alt="">
+            </div>
+            <div class="line footer-line"></div>
+            <div class="more-info">
+                <ul>
+                    <li>Mở cửa 6h-23h mỗi ngày</li>
+                    <li>Tp. Hồ Chí Minh</li>
+                    <li>Hotline: 0903252xxx</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

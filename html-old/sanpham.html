@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sản phẩm</title>
+    </head>
+    <!-- css global -->
+    <style>
+    @font-face {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    src: url(font/Microsoft.ttf) format("truetype");
+    }
+    @font-face {
+    font-family: "BR Sans Serif";
+    src: url(font/BadScript.ttf) format("truetype");
+    }
+    :root {
+        --red: #c34439;
+        --black: #202020;
+        --lightblack: #4E4E4E;
+        --gray: #BDBDBD;
+        --lightgray: #faf9f8;
+        --yellow: #FFB11B;
+    }
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        color: var(--black);
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--lightgray);
+        background-image: url(image/backgroundoutofcontainer.png);
+    }
+    a {
+        text-decoration: none;
+    }
+    .line {
+        border-bottom: 1px solid var(--gray);
+        width: 85%;
+        margin: 10px auto;
+    }
+    
+</style>
+    <!-- css header footer -->
+    <style>
+    header {
+        width: 100%;
+        height: 100px;
+        padding: 10px 100px;
+        background-color: #171717;
+        display: inline-grid;
+        grid-template-columns: 2fr 350px 4fr 1fr 137px;
+        gap: 10px;
+        justify-content: space-around;
+        align-items: center;
+    }
+    header>* {
+        text-align: center;
+    }
+    header * {
+        font-size: 18px;
+    }
+    header .logo {
+        width: 193px;
+        margin-bottom: 10px;
+    }
+    header .menu {
+        display: flex;
+        justify-content: space-around;
+        padding-left: 20px;
+    }
+    header .menu a {
+        color: white;
+        margin-right: 20px;
+    }
+    header .search-box {
+        border: 1px solid var(--gray);
+        padding: 5px 0px 5px 10px;
+        height: 42px;
+        border-radius: 21px;
+        width: 100%;
+        min-width: 150px;
+    }
+    header .search-box>* {
+        margin: auto;
+        vertical-align: middle;
+    }
+    header .search-box input {
+        outline: none;
+        border: none;
+        background-color: unset;
+        color: white;
+        width: 85%;
+    }
+    header .search-box input::placeholder {
+        color: white;
+    }
+    header .cart img {
+        height: fit-content;
+    }
+    header .account {
+        text-align: center;
+        background-color: var(--red);
+        padding: 5px;
+        border-radius: 5px;
+        width: 137px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    header .account:hover {
+        transform: scale(1.1);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    header .account>* {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0px 5px;
+        color: white;
+    }
+    footer {
+        width: 100%;
+        margin-top: 200px;
+        background-image: url('image/background-footer.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        padding: 10px 100px 50px;
+    }
+    footer .gallery {
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 1;
+        display: flex;
+        justify-content: space-around;
+    }
+    footer .gallery img {
+        border-radius: 10px;
+        width: 1fr;
+        height: fit-content;
+    }
+    footer .about {
+        color: var(--lightgray);
+        font-size: 20px;
+        width: 100%;
+        margin: 500px auto 100px;
+        text-align: center;
+        user-select: none;
+    }
+    footer .menu-box {
+        border: 1px solid white;
+        position: relative;
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        user-select: none;
+    }
+    footer .logo-footer {
+        width: 150px;
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        backdrop-filter: blur(50px);
+        user-select: none;
+    }
+    footer .footer-menu {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    footer .footer-menu a {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        margin: 0px 10px;
+    }
+    footer .social-icons {
+        vertical-align: middle;
+        text-align: right;
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+    footer .social-icons>img {
+        margin: 0px 5px;
+        width: 30px;
+    }
+    footer .footer-line {
+        grid-row: 2 / 3;
+        grid-column: 1 / 3;
+    }
+    footer .more-info {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+        text-align: right;
+    }
+    footer .more-info ul li {
+        color: white;
+        display: inline-block;
+        margin: 0px 20px;
+    }
+    @media (max-width: 1300px) {
+        footer .gallery img:nth-child(5) {
+            display: none;
+        }
+    }
+    @media (max-width: 1050px) {
+        footer .gallery img:nth-child(4) {
+            display: none;
+        }
+    }
+    @media (max-width: 780px) {
+        footer .gallery img:nth-child(3) {
+            display: none;
+        }
+    }
+</style>
+    <!-- css trang -->
+    <style>
+    .view-more {
+        display: flex;
+        width: 75%;
+        margin: 10px auto;
+        justify-content: end;
+        padding: 5px;
+    }
+    .view-more>p {
+        color: var(--red);
+        font-size: 15px;
+        font-weight: bold;
+        width: fit-content;
+        margin-right: 10px;
+    }
+    .view-more>img {
+        width: 20px;
+        height: fit-content;
+    }
+    .banner {
+        position: relative;
+        height: 500px;
+    }
+    .banner img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px 0px 10px 10px;
+    }
+    .special-text {
+        font-family: "BR Sans Serif";
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translate(-50%, 0px);
+        z-index: 1;
+        color: white;
+        font-size: 35px;
+        font-weight: bold;
+        text-shadow: 0px 0px 5px black;
+    }
+    .banner>.order-button {
+        bottom: 50px;
+        left: 50%;
+        transform: translate(-50%, 0px);
+        position: absolute;
+        color: white;
+        border: 1px solid white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-shadow: 0px 0px 5px black;
+        cursor: pointer;
+    }
+    .hot-categories {
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid var(--gray);
+        margin: 50px auto;
+        width: 1100px;
+        display: flex;
+        justify-content: space-around;
+        box-shadow: 2px 2px 2px var(--gray);
+    }
+    .hot-categories p {
+        padding: 8px 10px;
+        margin: 8px;
+        border-radius: 5px;
+    }
+    .hot-categories .selected-hot-categories {
+        background-color: var(--red);
+    }
+    .container {
+        padding: 10px 100px;
+    }
+    .title {
+        text-align: center;
+        color: var(--red);
+        font-weight: bold;
+        font-size: 25px;
+    }
+    .div-description {
+        text-align: center;
+        color: var(--lightblack);
+        font-size: 20px;
+    }
+    .products {
+        margin: 20px 0px;
+    }
+    .flex {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .product {
+        padding: 10px;
+        margin: 20px;
+        border: 1px solid var(--gray);
+        border-radius: 5px;
+        width: 250px;
+        display: grid;
+        position: relative;
+        gap: 10px 0px;
+        grid-template-columns: auto auto;
+        box-shadow: 2px 2px 5px var(--gray);
+        cursor: pointer;
+    }
+    .product-image {
+        margin: 20px 0px 10px;
+        width: 100px;
+        justify-self: center;
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+    }
+    .product-image:hover {
+        transform: scale(1.1);
+        transition: 0.5s;
+    }
+    .product-rating {
+        font-size: 20px;
+        color: gold;
+        text-shadow: 1px 1px 1px orange;
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+    }
+    .product-name {
+        font-size: 20px;
+        color: var(--black);
+        font-weight: 600;
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+    }
+    .product-short-description {
+        font-size: 15px;
+        color: var(--lightblack);
+        grid-column: 1 / 3;
+        grid-row: 4 / 5;
+    }
+    .product-original-price {
+        font-size: 18px;
+        text-decoration: line-through;
+        color: #BDBDBD;
+        grid-column: 1 / 3;
+        grid-row: 5 / 6;
+    }
+    .product-price {
+        font-size: 20px;
+        color: var(--black);
+        grid-row: 6 / 7;
+        grid-column: 1 / 2;
+        margin: auto 0px;
+        font-weight: 600;
+    }
+    .product-buttons {
+        text-align: right;
+        grid-row: 6 / 7;
+        grid-column: 2 / 3;
+        margin: auto 0px;
+    }
+    .product-buttons img {
+        display: inline-block;
+        padding: 5px;
+        width: 30px;
+        border-radius: 5px;
+    }
+    .product-buttons .product-button-cart {
+        background-color: var(--red);
+    }
+    .product-buttons .product-button-share {
+        background-color: var(--black);
+    }
+    .product-discount-tag {
+        position: absolute;
+        right: 20px;
+        top: -20px;
+    }
+    .discount-tag {
+        position: relative;
+    }
+    .discount-percentage {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: bold;
+    }
+    .categories {
+        width: 1000px;
+        margin: auto;
+    }
+    .category {
+        display: grid;
+        grid-template-columns: 75px auto;
+        width: 230px;
+        height: 75px;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--gray);
+        padding-right: 20px;
+        margin: 20px;
+    }
+    .category .image-box {
+        background-color: var(--red);
+    }
+    .category .image-box img {
+        width: 75px;
+        height: 75px;
+    }
+    .category .text-box {
+        justify-self: right;
+        margin: auto 0px;
+    }
+    .category-name {
+        font-size: 20px;
+    }
+    .category-product-count {
+        font-size: 15px;
+    }
+</style>
+    <!-- css banner -->
+    <style>
+    .banner{
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .button {
+        top: 66%;
+        left: 79.5%;
+        position: absolute;
+        text-align: center;
+        background-color: var(--red);
+        padding: 15px;
+        z-index: 1;
+        border-radius: 5px;
+        width: 170px;
+    }
+    .button:hover {
+        transform: scale(1.1);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .button>* {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0px 5px;
+        color: white;
+    }
+
+</style>
+<!-- css banner -->
+<style>
+    .banner{
+        position: relative;
+        width: 100%;
+    }
+    .button {
+        top: 66%;
+        left: 79.5%;
+        position: absolute;
+        text-align: center;
+        background-color: var(--red);
+        padding: 15px;
+        z-index: 1;
+        border-radius: 5px;
+        width: 170px;
+    }
+    .button:hover {
+        transform: scale(1.1);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .button>* {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0px 5px;
+        color: white;
+    }
+
+</style>
+    <!-- css thân trang -->
+    <style>
+        .monanhot{
+        position: relative;
+    }
+    .tieude{
+        text-align: center;
+        padding: 10px;
+        padding-top: 10%;
+    }
+    .tieude >h2{
+        color: #c34439;
+    }
+    .tieude >p{
+        display: block;
+        padding: 10px;
+        width: 50%;
+        margin-block-start: 0.83em;
+        margin-block-end: 0.83em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin: auto;
+    }
+    .category{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 5% 0;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.329);
+    }
+    .category> .category-name{
+        display: flex;
+        justify-content: center;
+        align-items: center ;
+    }
+    .category > .category-name > .item{
+        margin: 0 5%;
+        padding: 0 10%;
+        height: 10%;
+        border-radius: 5px;
+        white-space: nowrap;
+        font-weight: 500;
+        color: #646464;
+    }
+    .category > .category-name > .item:hover{
+        transition: 0.3s;
+        background-color: #c34439;
+        color: #faf9f8;
+    }
+    .fillingbar{
+        display: flex;
+        justify-content: right;
+    }
+    h3{
+        color:#4E4E4E;
+    }
+    .fillingbar > .fill, .arrange{
+        display: flex;
+        align-items: center;
+    }
+    .fill > img{
+        margin: 7%;
+        width: 27%;
+        height: 50%;
+    }
+    .arrange > img{
+        margin: 7%;
+        width: 20%;
+        height: 50%;
+    }
+</style>
+<!-- css danhmuc -->
+<style>
+    .container-sanpham{
+        display: flex;
+        margin: 5% 0;
+    }
+    .danhmuc{
+        margin-right: 10%;
+    }
+    .itemgaran{
+        background-color: rgb(248, 248, 248);
+        width: 250%;
+        height: 57px;
+        align-items: center;
+        display: flex;
+        padding-left: 30%;
+        border: 1px solid rgb(223, 223, 223);
+        border-radius: 10px 10px 0 0;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .itemgaran:hover{
+        transition: 0.3s;
+        background-color: #c34439;
+        color: #faf9f8;
+    }
+    .itemdanhmuc{
+        background-color: rgb(248, 248, 248);
+        width: 250%;
+        height: 57px;
+        align-items: center;
+        display: flex;
+        padding-left: 30%;
+        border: 1px solid rgb(223, 223, 223);
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .itemdanhmuc:hover{
+        transition: 0.3s;
+        background-color: #c34439;
+        color: #faf9f8;
+    }
+    .itembun{
+        background-color: rgb(248, 248, 248);
+        width: 250%;
+        height: 57px;
+        align-items: center;
+        display: flex;
+        padding-left: 30%;
+        border: 1px solid rgb(223, 223, 223);
+        border-radius: 0 0 10px 10px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .itembun:hover{
+        transition: 0.3s;
+        background-color: #c34439;
+        color: #faf9f8;
+    }
+</style>
+
+ <!-- css item sanpham -->
+ <style>
+    .monanhot-sanpham{
+        padding-left: 6%;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 50px; 
+        align-items: center;
+    }
+    .monanhot-sanpham-item{
+        position: relative;
+        padding: 5%;
+        border-radius: 10px;
+        border: 1px solid #4e4e4e16;
+        background-color: rgb(245, 245, 245)
+    }
+    .monanhot-sanpham-item > .image{
+        width: 100%;
+    }
+    .monanhot-sanpham-item > h3{
+        padding-top: 5%;
+        text-align: center;
+        font-size: 150%;
+        color: #202020;
+    }
+    .monanhot-sanpham-item > .danhgia{
+        width: 30%;
+        margin: 0 35%;
+    }
+    .monanhot-sanpham-item > p{
+        text-align: center;
+        font-size: small;
+        padding: 7% 0;
+    }
+    .monanhot-sanpham-item > .price{
+        color: #c34439;
+        font-weight: 700;
+        padding-bottom: 15%;
+    }
+    .monanhot-sanpham-item-button > button{
+        background-color: #c34439;
+        border: none;
+        color: #ffffff;
+        font-weight: 600;
+        padding: 5%;
+        border-radius: 5px;
+        width: 60%;
+        cursor: pointer;
+        transition: transform 0.5s;
+    }
+    .monanhot-sanpham-item-button > button:hover {
+        transform: scale(1.1); 
+    }
+    .monanhot-sanpham-item-button > .cart{
+        width: 17%;
+        margin-left: 10%;
+        cursor: pointer;
+        transition: transform 0.5s;
+    }
+    .monanhot-sanpham-item-button > .share{
+        width: 17%;
+        margin-left: 2%;
+        cursor: pointer;
+        transition: transform 0.5s;
+    }
+    .monanhot-sanpham-item-button >.cart:hover {
+        transform: scale(1.1); 
+    }
+    .monanhot-sanpham-item-button >.share:hover {
+        transform: scale(1.1); 
+    }
+    .monanhot-sanpham-item-button{
+        display: flex;
+    }
+    .monanhot > img{
+        width: 10%;
+        margin-right: 0;
+        cursor: pointer;
+    }
+    .monanhot-sanpham-item >.sale >img{
+        position: absolute;
+        width: 25%;
+        margin-left: 60%;
+        margin-top: -10%;
+    }
+</style>
+<!-- css so trang san pham -->
+<style>
+    .sotrang{
+        text-align: center;
+        display: flex;
+        font-size: 20px;
+        font-weight: 500;
+        align-items: center;
+        padding-left: 50%;
+    }
+    .sotrang > p{
+        margin: 10%;
+    }
+    .sotrang > .arrow{
+        width: 10px;
+        margin: 5%;
+    }
+</style>
+    <body>
+        <header>
+            <img src="/chickcuisine/content/image/horizontal-logo-red.png" alt class="logo">
+            <img src="/chickcuisine/content/image/logo-red.png" alt class="logo"
+                style="display: none;">
+            <div class="menu">
+                <a href>Trang chủ</a>
+                <a href>Thực đơn</a>
+                <a href>Giới thiệu</a>
+            </div>
+            <div class="search-box">
+                <img src="/chickcuisine/content/image/icon/search.png" alt>
+                <input type="text" placeholder="Tìm món">
+            </div>
+            <a href class="cart">
+                <img src="/chickcuisine/content/image/icon/cart.png" alt>
+            </a>
+            <div class="account">
+                <img src="/chickcuisine/content/image/icon/user.png" alt>
+                <p>Tài khoản</p>
+            </div>
+        </header>
+        <div class="banner">
+            <img src="/chickcuisine/content/image/banner2.png" alt>
+            <div class="button">
+                <p>Khám phá ngay !</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="tieude">
+                <h2>Món Ăn Bán Chạy Nhất</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqu</p>
+            </div>
+            <div class="category">
+                <div class="category-name">
+                    <div class="item">
+                        Tất cả
+                    </div>
+                    <div class="item">
+                        Cơm
+                    </div>
+                    <div class="item">
+                        Bún & Phở
+                    </div>
+                    <div class="item">
+                        Trà sữa
+                    </div>
+                    <div class="item">
+                        Đồ uống
+                    </div>
+                    <div class="item">
+                        Khác
+                    </div>
+                </div>
+            </div>
+            <div class="fillingbar">
+                    <div class="fill">
+                        <h3>Lọc</h3>
+                        <img src="/chickcuisine/content/image/fill.png" alt="">
+                    </div>
+                    <div class="arrange">
+                        <h3>Sắp xếp</h3>
+                        <img src="/chickcuisine/content/image/arrange.png" alt="">
+                    </div>
+            </div>
+
+            <div class="container-sanpham">
+
+                <div class="danhmuc">
+                    
+                    <div class="itemgaran">
+                        Gà rán
+                    </div>
+                    <div class="itemdanhmuc">
+                        Cơm chiên
+                    </div>
+                    <div class="itemdanhmuc">
+                        Mì cay
+                    </div>
+                    <div class="itemdanhmuc">
+                         Khoai tây chiên
+                    </div>
+                    <div class="itemdanhmuc">
+                        Trà sữa
+                    </div>
+                    <div class="itemdanhmuc">
+                        Trà trái cây
+                    </div>
+                    <div class="itemdanhmuc">
+                        Nước ngọt
+                    </div>
+                    <div class="itemdanhmuc">
+                        Hamburger
+                    </div>
+                    <div class="itemdanhmuc">
+                        Phở
+                    </div>
+                    <div class="itembun">
+                        Bún
+                    </div>
+
+                </div>
+
+                <div class="monanhot-sanpham">
+
+                    <div class="monanhot-sanpham-item">
+                        <div class="sale"><img src="/chickcuisine/content/image/sale.png" alt></div>
+                        <img class="/chickcuisine/content/image" src="/chickcuisine/content/image/garan.png" alt>
+                        <h3>Gà rán</h3>
+                        <img class="danhgia" src="/chickcuisine/content/image/danhgia.png" alt>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqu</p>
+                        <h3 class="price">39.000 vnđ</h3>
+                        <div class="monanhot-sanpham-item-button">
+                            <button>Mua ngay</button>
+                            <img class="cart" src="/chickcuisine/content/image/cart.png" alt="cart">
+                            <img class="share" src="/chickcuisine/content/image/share.png" alt="share">
+                        </div>
+                    </div>
+
+                    <div class="monanhot-sanpham-item">
+                        <div class="sale"><img src="/chickcuisine/content/image/sale.png" alt></div>
+                        <img class="/chickcuisine/content/image" src="/chickcuisine/content/image/garan.png" alt>
+                        <h3>Gà rán</h3>
+                        <img class="danhgia" src="/chickcuisine/content/image/danhgia.png" alt>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqu</p>
+                        <h3 class="price">39.000 vnđ</h3>
+                        <div class="monanhot-sanpham-item-button">
+                            <button>Mua ngay</button>
+                            <img class="cart" src="/chickcuisine/content/image/cart.png" alt="cart">
+                            <img class="share" src="/chickcuisine/content/image/share.png" alt="share">
+                        </div>
+                    </div>
+
+                    <div class="monanhot-sanpham-item">
+                        <div class="sale"><img src="/chickcuisine/content/image/sale.png" alt></div>
+                        <img class="/chickcuisine/content/image" src="/chickcuisine/content/image/garan.png" alt>
+                        <h3>Gà rán</h3>
+                        <img class="danhgia" src="/chickcuisine/content/image/danhgia.png" alt>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqu</p>
+                        <h3 class="price">39.000 vnđ</h3>
+                        <div class="monanhot-sanpham-item-button">
+                            <button>Mua ngay</button>
+                            <img class="cart" src="/chickcuisine/content/image/cart.png" alt="cart">
+                            <img class="share" src="/chickcuisine/content/image/share.png" alt="share">
+                        </div>
+                    </div>
+
+                    <div class="monanhot-sanpham-item">
+                        <div class="sale"><img src="/chickcuisine/content/image/sale.png" alt></div>
+                        <img class="/chickcuisine/content/image" src="/chickcuisine/content/image/garan.png" alt>
+                        <h3>Gà rán</h3>
+                        <img class="danhgia" src="/chickcuisine/content/image/danhgia.png" alt>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqu</p>
+                        <h3 class="price">39.000 vnđ</h3>
+                        <div class="monanhot-sanpham-item-button">
+                            <button>Mua ngay</button>
+                            <img class="cart" src="/chickcuisine/content/image/cart.png" alt="cart">
+                            <img class="share" src="/chickcuisine/content/image/share.png" alt="share">
+                        </div>
+                    </div>
+
+                    <div class="monanhot-sanpham-item">
+                        <div class="sale"><img src="/chickcuisine/content/image/sale.png" alt></div>
+                        <img class="/chickcuisine/content/image" src="/chickcuisine/content/image/garan.png" alt>
+                        <h3>Gà rán</h3>
+                        <img class="danhgia" src="/chickcuisine/content/image/danhgia.png" alt>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqu</p>
+                        <h3 class="price">39.000 vnđ</h3>
+                        <div class="monanhot-sanpham-item-button">
+                            <button>Mua ngay</button>
+                            <img class="cart" src="/chickcuisine/content/image/cart.png" alt="cart">
+                            <img class="share" src="/chickcuisine/content/image/share.png" alt="share">
+                        </div>
+                    </div>
+
+                    <div class="monanhot-sanpham-item">
+                        <div class="sale"><img src="/chickcuisine/content/image/sale.png" alt></div>
+                        <img class="/chickcuisine/content/image" src="/chickcuisine/content/image/garan.png" alt>
+                        <h3>Gà rán</h3>
+                        <img class="danhgia" src="/chickcuisine/content/image/danhgia.png" alt>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqu</p>
+                        <h3 class="price">39.000 vnđ</h3>
+                        <div class="monanhot-sanpham-item-button">
+                            <button>Mua ngay</button>
+                            <img class="cart" src="/chickcuisine/content/image/cart.png" alt="cart">
+                            <img class="share" src="/chickcuisine/content/image/share.png" alt="share">
+                        </div>
+                    </div>
+
+                    <div class="monanhot-sanpham-item">
+                        <div class="sale"><img src="/chickcuisine/content/image/sale.png" alt></div>
+                        <img class="/chickcuisine/content/image" src="/chickcuisine/content/image/garan.png" alt>
+                        <h3>Gà rán</h3>
+                        <img class="danhgia" src="/chickcuisine/content/image/danhgia.png" alt>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqu</p>
+                        <h3 class="price">39.000 vnđ</h3>
+                        <div class="monanhot-sanpham-item-button">
+                            <button>Mua ngay</button>
+                            <img class="cart" src="/chickcuisine/content/image/cart.png" alt="cart">
+                            <img class="share" src="/chickcuisine/content/image/share.png" alt="share">
+                        </div>
+                    </div>
+
+                    <div class="monanhot-sanpham-item">
+                        <div class="sale"><img src="/chickcuisine/content/image/sale.png" alt></div>
+                        <img class="/chickcuisine/content/image" src="/chickcuisine/content/image/garan.png" alt>
+                        <h3>Gà rán</h3>
+                        <img class="danhgia" src="/chickcuisine/content/image/danhgia.png" alt>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqu</p>
+                        <h3 class="price">39.000 vnđ</h3>
+                        <div class="monanhot-sanpham-item-button">
+                            <button>Mua ngay</button>
+                            <img class="cart" src="/chickcuisine/content/image/cart.png" alt="cart">
+                            <img class="share" src="/chickcuisine/content/image/share.png" alt="share">
+                        </div>
+                    </div>
+
+                    <div class="monanhot-sanpham-item">
+                        <div class="sale"><img src="/chickcuisine/content/image/sale.png" alt></div>
+                        <img class="/chickcuisine/content/image" src="/chickcuisine/content/image/garan.png" alt>
+                        <h3>Gà rán</h3>
+                        <img class="danhgia" src="/chickcuisine/content/image/danhgia.png" alt>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                            sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqu</p>
+                        <h3 class="price">39.000 vnđ</h3>
+                        <div class="monanhot-sanpham-item-button">
+                            <button>Mua ngay</button>
+                            <img class="cart" src="/chickcuisine/content/image/cart.png" alt="cart">
+                            <img class="share" src="/chickcuisine/content/image/share.png" alt="share">
+                        </div>
+                    </div>
+
+                    <div class="sotrang">
+                        <img class="arrow" src="/chickcuisine/content/image/leftarrow1.png" alt="">
+                        <p>1</p>
+                        <p>2</p>
+                        <p>3</p>
+                        <p>4</p>
+                        <p>5</p>
+                        <img class="arrow" src="/chickcuisine/content/image/rightarrow1.png" alt="">
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer>
+            <div class="gallery">
+                <img style="margin-top: -100px;" src="/chickcuisine/content/image/Image.png" alt>
+                <img style="margin-top: -10px;" src="/chickcuisine/content/image/Image-1.png" alt>
+                <img style="margin-top: -50px;" src="/chickcuisine/content/image/Image-2.png" alt>
+                <img style="margin-top: -100px;" src="/chickcuisine/content/image/Image-3.png" alt>
+                <img style="margin-top: -50px;" src="/chickcuisine/content/image/Image-4.png" alt>
+            </div>
+            <div class="about">
+                ChickCuisine tự hào cung cấp những món ăn ngon nhất từ khắp nơi
+                trên thế giới đến ngay tận bàn ăn của bạn. Chúng tôi cam kết về
+                chất lượng và sự hài lòng của khách hàng. Hãy theo dõi chúng tôi
+                trên các trang mạng xã hội để cập nhật thông tin mới nhất và các
+                ưu đãi đặc biệt!
+            </div>
+            <div class="menu-box">
+                <img class="logo-footer" src="/chickcuisine/content/image/logo-white.png" alt>
+                <div class="footer-menu">
+                    <a href>Trang chủ</a>
+                    <a href>Thực đơn</a>
+                    <a href>Giới thiệu</a>
+                </div>
+                <div class="social-icons">
+                    <img src="/chickcuisine/content/image/icon/Vector.png" alt>
+                    <img src="/chickcuisine/content/image/icon/Vector-1.png" alt>
+                    <img src="/chickcuisine/content/image/icon/Vector-2.png" alt>
+                    <img src="/chickcuisine/content/image/icon/Vector-3.png" alt>
+                </div>
+                <div class="line footer-line"></div>
+                <div class="more-info">
+                    <ul>
+                        <li>Mở cửa 6h-23h mỗi ngày</li>
+                        <li>Tp. Hồ Chí Minh</li>
+                        <li>Hotline: 0903252xxx</li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

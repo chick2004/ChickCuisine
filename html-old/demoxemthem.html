@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #text-container {
+            height: 50px;
+            overflow: hidden;
+        }
+    </style>
+    <title>Read More Example</title>
+</head>
+<body>
+
+<div id="text-container">
+    <p id="long-text">
+        This is a long text that you can expand to read more. It contains some interesting content that you might want to explore further.
+        This is a long text that you can expand to read more. It contains some interesting content that you might want to explore further.
+        This is a long text that you can expand to read more. It contains some interesting content that you might want to explore further.
+        This is a long text that you can expand to read more. It contains some interesting content that you might want to explore further.
+        This is a long text that you can expand to read more. It contains some interesting content that you might want to explore further.
+        This is a long text that you can expand to read more. It contains some interesting content that you might want to explore further.
+        This is a long text that you can expand to read more. It contains some interesting content that you might want to explore further.
+        This is a long text that you can expand to read more. It contains some interesting content that you might want to explore further.
+        This is a long text that you can expand to read more. It contains some interesting content that you might want to explore further.
+        This is a long text that you can expand to read more. It contains some interesting content that you might want to explore further.
+        This is a long text that you can expand to read more. It contains some interesting content that you might want to explore further.
+    </p>
+</div>
+
+<button id="read-more-button" onclick="toggleReadMore()">Read More</button>
+
+<script>
+    var isExpanded = false;
+
+    function toggleReadMore() {
+        var textContainer = document.getElementById("text-container");
+        var longText = document.getElementById("long-text");
+        var readMoreButton = document.getElementById("read-more-button");
+
+        if (!isExpanded) {
+            textContainer.style.height = "auto";
+            readMoreButton.textContent = "Read Less";
+        } else {
+            textContainer.style.height = "50px";
+            readMoreButton.textContent = "Read More";
+        }
+
+        isExpanded = !isExpanded;
+    }
+</script>
+
+</body>
+</html>

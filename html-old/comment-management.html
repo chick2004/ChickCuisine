@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý bán hàng</title>
+</head>
+<!-- style global -->
+<style>
+    :root {
+        --red: #c34439;
+        --black: #202020;
+        --lightblack: #4E4E4E;
+        --gray: #BDBDBD;
+        --lightgray: #faf9f8;
+        --yellow: #FFB11B;
+    }
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        color: var(--black);
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--lightgray);
+    }
+    a {
+        text-decoration: none;
+    }
+    /* Đường gạch ngang */
+    .line {
+        border-bottom: 1px solid var(--gray);
+        width: 85%;
+        margin: 10px auto;
+    }
+    
+</style>
+<!-- style layout -->
+<style>
+    header {
+        position: fixed;
+        width: 100%;
+        border-bottom: 1px solid var(--gray);
+        display: grid;
+        grid-template-columns: 200px 50px auto;
+    }
+    .logo {
+        
+        height: 70px;
+        border-bottom: 1px solid var(--gray);
+        background: linear-gradient(267deg, var(--red) 1.51%, var(--yellow) 97.91%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    header .logo>img {
+        width: 150px;
+        height: auto;
+        border: unset;
+        background: none;
+    }
+    header .left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    header .right {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+
+    }
+    header .right>* {
+        margin: 0px 20px;
+    }
+    header .right .avt {
+        border-radius: 50%;
+    }
+    .sidebar {
+        width: 200px;
+        height: 100vh;
+        border-right: 1px solid var(--gray);
+        background-color: white;
+        position: fixed;
+        top: 70px;
+    }
+    .sidebar ul {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+    }
+    .sidebar ul li {
+        box-sizing: border-box;
+        height: 40px;
+        padding: 10px 5px 10px 10px;
+        color: var(--lightblack);
+    }
+    .sidebar ul li:hover {
+        cursor: pointer;
+        background-color: rgb(245, 245, 245);
+    }
+
+    .sidebar ul li svg {
+        margin-right: 10px;
+    }
+    .sidebar ul li svg path {
+        
+        fill: var(--lightblack);
+    }
+    .topbar {
+        width: 100%;
+        background-color: white;
+        border-bottom: 1px solid var(--gray);
+    }
+    main {
+        position: absolute;
+        left: 200px;
+        top: 70px;
+        padding: 15px;
+        width: calc(100% - 200px);
+        display: block;
+    }
+    .sidebar .selected {
+        border-left: 2px solid var(--red);
+    }
+    .sidebar .selected span, .sidebar .selected svg path{
+        color: var(--red);
+        fill: var(--red);
+    }
+</style>
+<!-- style trang -->
+<style>
+    .toolbar {
+        width: 100%;
+        display: grid;
+        height: 35px;
+        grid-template-columns: repeat(2, 50%);
+        margin-bottom: 10px;
+    }
+    .toolbar .left {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    .toolbar .right {
+        grid-column: 2 /3;
+        grid-row: 1 / 2;
+    }
+    .toolbar .left *, .toolbar .right * {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+    .toolbar .add-button {
+        background-color: var(--red);
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .toolbar .add-button>* {
+        display: inline-block;
+        vertical-align: top;
+    }
+    .toolbar .add-button p {
+        color: white;
+        margin-left: 10px;
+    }
+    .toolbar .search-bar {
+        background-color: white;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid var(--gray);
+        margin-left: 10px;
+    }
+    .toolbar .search-bar input {
+        border: unset;
+        outline: none;
+    }
+    .right {
+        text-align: right;
+    }
+    .right .filter-button {
+        margin-right: 20px;
+    }
+    .right p {
+        margin-left: 10px;
+    }
+    .list-comment {
+        background-color: white;
+        border: 1px solid var(--gray);
+        border-radius: 10px;
+    }
+    .list-comment, .list-comment table {
+        width: 100%;
+    }
+    .list-comment table tr:first-child td, .list-comment table tr td:first-child, .list-comment table tr td:last-child {
+        text-align: center;
+    }
+    .list-comment .comment-image img{
+        width: 75px;
+        height: 75px;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    .list-comment table {
+        
+        border-collapse: collapse;
+    }
+    .list-comment table td, .cart table th {
+        padding: 10px;
+        text-align: center;
+    }
+    .list-comment table tr:first-child {
+        height: 50px;
+    }
+    .list-comment table tr:not(:last-child) {
+        border-bottom: 1px solid var(--gray);
+    }
+    .list-comment table tr {
+        height: 100px;
+    }
+    .comment-action>* {
+        background-color: var(--red);
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+        border-radius: 5px;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0px 5px;
+        cursor: pointer;
+    }
+    .comment-content {
+        text-align: left !important;
+    }
+    .comment-name>div>* {
+        display: inline-block !important;
+        vertical-align: middle !important;
+    }
+    .comment-name img {
+        width: 65px;
+        border-radius: 50%;
+        border: 1px solid var(--gray);
+        margin-right: 5px;
+    }
+</style>
+<body>
+    <header>
+        <div class="logo">
+            <img class="logo" src="/chickcuisine/content/image/horizontal-logo-white.png" alt="">
+        </div>
+        <div class="left"> 
+            <img src="/chickcuisine/content/image/icon/more.png" alt="">
+        </div>
+        <div class="right">
+            <img src="/chickcuisine/content/image/icon/belt.png" alt="">
+            <img src="/chickcuisine/content/image/icon/mail.png" alt="">
+            <img class="avt" src="/chickcuisine/content/image/avt.png" alt="">
+            <img src="/chickcuisine/content/image/icon/gear.png" alt="">
+        </div>
+    </header>
+    <div class="sidebar">
+        <ul>
+            <li >
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 14.1964C15 14.6402 14.6402 15 14.1964 15H1.875C0.839464 15 0 14.1605 0 13.125V0.803571C0 0.359775 0.359775 0 0.803571 0C1.24737 0 1.60714 0.359775 1.60714 0.803571V13.125C1.60714 13.273 1.72707 13.3929 1.875 13.3929H14.1964C14.6402 13.3929 15 13.7526 15 14.1964Z"/>
+                    <path d="M9.64299 2.94642C9.64299 2.50263 10.0028 2.14285 10.4466 2.14285H14.1966C14.6404 2.14285 15.0001 2.50263 15.0001 2.94642V6.69642C15.0001 7.14022 14.6404 7.5 14.1966 7.5C13.7528 7.5 13.393 7.14022 13.393 6.69642V4.88638L9.13974 9.1396C8.9891 9.29035 8.78467 9.375 8.57157 9.375C8.35846 9.375 8.15403 9.29035 8.00328 9.1396L6.42871 7.56503L4.05049 9.94317C3.73668 10.257 3.22788 10.257 2.91407 9.94317C2.60026 9.62935 2.60026 9.12064 2.91407 8.80682L5.8605 5.86036C6.01119 5.70966 6.21559 5.625 6.42871 5.625C6.64184 5.625 6.84622 5.70966 6.99692 5.86036L8.57157 7.435L12.2565 3.75H10.4466C10.0028 3.75 9.64299 3.39022 9.64299 2.94642Z"/>
+                </svg>
+                <span>Thống kê</span>
+            </li>
+            <li>
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 1.25C0 0.55965 0.55965 0 1.25 0H13.75C14.4404 0 15 0.55965 15 1.25V2.5C15 3.19035 14.4404 3.75 13.75 3.75H1.25C0.55965 3.75 0 3.19035 0 2.5V1.25Z"/>
+                    <path d="M1.25 5V12.5C1.25 13.8807 2.36929 15 3.75 15H11.25C12.6308 15 13.75 13.8807 13.75 12.5V5H1.25ZM6.25 6.25H8.75C9.09518 6.25 9.375 6.52982 9.375 6.875C9.375 7.22018 9.09518 7.5 8.75 7.5H6.25C5.90483 7.5 5.625 7.22018 5.625 6.875C5.625 6.52982 5.90483 6.25 6.25 6.25Z"/>
+                </svg>
+                    
+                <span>Quản lý sản phẩm</span>
+            </li>
+            <li>
+                <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.971832 14.8938C0.556611 15.171 0 14.8734 0 14.3741V2.51287C0 1.13422 1.1163 0.0159194 2.49494 0.0134495L9.9932 4.05791e-06C11.3736 -0.0024567 12.4946 1.11456 12.4971 2.49495V14.3741C12.4971 14.8734 11.9405 15.171 11.5253 14.8938L6.24855 11.3705L0.971832 14.8938Z"/>
+                </svg>
+                <span>Quản lý danh mục</span>
+            </li>
+            <li>
+                <svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.75 7.5C10.9926 7.5 12 8.50735 12 9.75C12 11.4241 11.3115 12.7654 10.1818 13.6722C9.06987 14.5647 7.57962 15 6 15C4.42038 15 2.93013 14.5647 1.81823 13.6722C0.688455 12.7654 0 11.4241 0 9.75C0 8.58051 0.892315 7.61933 2.03328 7.5103L2.24997 7.5H9.75ZM6 0C7.65686 0 9 1.34314 9 3C9 4.65686 7.65686 6 6 6C4.34314 6 3 4.65686 3 3C3 1.34314 4.34314 0 6 0Z"/>
+                </svg>
+                    
+                <span>Quản lý người dùng</span>
+            </li>
+            <li>
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.14286 0C0.959389 0 0 0.959389 0 2.14286V12.8571C0 14.0406 0.959389 15 2.14286 15H12.8571C14.0406 15 15 14.0406 15 12.8571V2.14286C15 0.959389 14.0406 0 12.8571 0H2.14286ZM4.82143 4.55357C4.82143 4.99737 4.46165 5.35714 4.01786 5.35714C3.57406 5.35714 3.21429 4.99737 3.21429 4.55357C3.21429 4.10978 3.57406 3.75 4.01786 3.75C4.46165 3.75 4.82143 4.10978 4.82143 4.55357ZM4.01786 8.57143C3.57406 8.57143 3.21429 8.21164 3.21429 7.76786C3.21429 7.32406 3.57406 6.96429 4.01786 6.96429C4.46165 6.96429 4.82143 7.32406 4.82143 7.76786C4.82143 8.21164 4.46165 8.57143 4.01786 8.57143ZM4.82143 10.9821C4.82143 11.4259 4.46165 11.7857 4.01786 11.7857C3.57406 11.7857 3.21429 11.4259 3.21429 10.9821C3.21429 10.5384 3.57406 10.1786 4.01786 10.1786C4.46165 10.1786 4.82143 10.5384 4.82143 10.9821ZM6.96429 4.28571H11.25C11.5458 4.28571 11.7857 4.52556 11.7857 4.82143C11.7857 5.11729 11.5458 5.35714 11.25 5.35714H6.96429C6.66842 5.35714 6.42857 5.11729 6.42857 4.82143C6.42857 4.52556 6.66842 4.28571 6.96429 4.28571ZM6.42857 8.03571C6.42857 7.73989 6.66842 7.5 6.96429 7.5H11.25C11.5458 7.5 11.7857 7.73989 11.7857 8.03571C11.7857 8.33154 11.5458 8.57143 11.25 8.57143H6.96429C6.66842 8.57143 6.42857 8.33154 6.42857 8.03571ZM6.96429 10.7143H11.25C11.5458 10.7143 11.7857 10.9542 11.7857 11.25C11.7857 11.5458 11.5458 11.7857 11.25 11.7857H6.96429C6.66842 11.7857 6.42857 11.5458 6.42857 11.25C6.42857 10.9542 6.66842 10.7143 6.96429 10.7143Z"/>
+                </svg>
+                    
+                <span>Quản lý đơn hàng</span>
+            </li>
+            <li>
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.96875 9.375C8.74537 9.375 9.375 10.0046 9.375 10.7812V11.25C9.375 13.0982 7.63172 15 4.6875 15C1.74329 15 0 13.0982 0 11.25V10.7812C0 10.0046 0.629597 9.375 1.40625 9.375H7.96875ZM4.6875 3.28125C6.11136 3.28125 7.26562 4.43552 7.26562 5.85938C7.26562 7.28323 6.11136 8.4375 4.6875 8.4375C3.26364 8.4375 2.10938 7.28323 2.10938 5.85938C2.10938 4.43552 3.26364 3.28125 4.6875 3.28125ZM13.125 0C14.1135 0 14.9233 0.764887 14.9948 1.73507L15 1.875V3.75C15 4.73846 14.2351 5.54828 13.265 5.61985L13.125 5.625H11.7178L10.5947 7.1248C10.0984 7.78687 9.09047 7.51866 8.92903 6.77274L8.91244 6.6681L8.907 6.5625L8.90625 5.56406L8.8335 5.54561C8.15344 5.3408 7.63613 4.76018 7.52306 4.04513L7.50516 3.88993L7.5 3.75V1.875C7.5 0.886537 8.26491 0.0767157 9.23503 0.00514694L9.375 0H13.125Z"/>
+                </svg>
+                    
+                <span>Quản lý đánh giá</span>
+            </li>
+        </ul>
+    </div>
+    <main>
+        <div class="toolbar">
+            <div class="left">
+                <div class="add-button">
+                    <img src="/chickcuisine/content/image/icon/add.png" alt="">
+                    <p>Thêm danh mục</p>
+                </div>
+                <div class="search-bar">
+                    <img src="/chickcuisine/content/image/icon/search-black.png" alt="">
+                    <input type="text" placeholder="Tìm kiếm">
+                </div>
+            </div>
+            <div class="right">
+                <div class="filter-button">
+                    <p>Lọc</p>
+                    <img src="/chickcuisine/content/image/icon/filter.png" alt="">
+                </div>
+                <div class="sort-button">
+                    <p>Sắp xếp</p>
+                    <img src="/chickcuisine/content/image/icon/sort.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="list-comment">
+            <table>
+                <tr>
+                    <td style="width: 5%;"><input type="checkbox" name="" id=""></td>
+                    <td style="width: 20%;">Tên</td>
+                    <td style="width: 10%;">Đánh giá</td>
+                    <td style="width: 20%;;">Nội dung</td>
+                    <td style="width: 15%;">Ngày</td>
+                    <td style="width: 10%;">Hành động</td>
+                </tr>
+                <tr>
+                    <td class="comment-checkbox"><input type="checkbox" name="" id=""></td>
+                    <td class="comment-name">
+                        <div> 
+                            <img src="/chickcuisine/content/image/food.png" alt="">
+                            <p>Tên người dùng</p>
+                        </div></td>
+                    <td class="comment-rating">5</td>
+                    <td class="comment-content">Lorem ipsum dolor sit amet consectetur. Et vel morbi...</td>
+                    <td class="comment-date">12/12/2022</td>
+                    <td class="comment-action">
+                        <div class="view-button">
+                            <img src="/chickcuisine/content/image/icon/view.png" alt="">
+                        </div>
+                        <div class="remove-button">
+                            <img src="/chickcuisine/content/image/icon/remove.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="comment-checkbox"><input type="checkbox" name="" id=""></td>
+                    <td class="comment-name">
+                        <div>
+                            <img src="/chickcuisine/content/image/food.png" alt="">
+                            <p>Tên người dùng</p>
+                        </div></td>
+                    <td class="comment-rating">5</td>
+                    <td class="comment-content">Lorem ipsum dolor sit amet consectetur. Et vel morbi...</td>
+                    <td class="comment-date">12/12/2022</td>
+                    <td class="comment-action">
+                        <div class="view-button">
+                            <img src="/chickcuisine/content/image/icon/view.png" alt="">
+                        </div>
+                        <div class="remove-button">
+                            <img src="/chickcuisine/content/image/icon/remove.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="comment-checkbox"><input type="checkbox" name="" id=""></td>
+                    <td class="comment-name">
+                        <div>
+                            <img src="/chickcuisine/content/image/food.png" alt="">
+                            <p>Tên người dùng</p>
+                        </div></td>
+                    <td class="comment-rating">5</td>
+                    <td class="comment-content">Lorem ipsum dolor sit amet consectetur. Et vel morbi...</td>
+                    <td class="comment-date">12/12/2022</td>
+                    <td class="comment-action">
+                        <div class="view-button">
+                            <img src="/chickcuisine/content/image/icon/view.png" alt="">
+                        </div>
+                        <div class="remove-button">
+                            <img src="/chickcuisine/content/image/icon/remove.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="comment-checkbox"><input type="checkbox" name="" id=""></td>
+                    <td class="comment-name">
+                        <div>
+                            <img src="/chickcuisine/content/image/food.png" alt="">
+                            <p>Tên người dùng</p>
+                        </div></td>
+                    <td class="comment-rating">5</td>
+                    <td class="comment-content">Lorem ipsum dolor sit amet consectetur. Et vel morbi...</td>
+                    <td class="comment-date">12/12/2022</td>
+                    <td class="comment-action">
+                        <div class="view-button">
+                            <img src="/chickcuisine/content/image/icon/view.png" alt="">
+                        </div>
+                        <div class="remove-button">
+                            <img src="/chickcuisine/content/image/icon/remove.png" alt="">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+    </main>
+</body>
+</html>

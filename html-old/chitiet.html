@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết</title>
+</head>
+<!-- css global -->
+<style>
+    @font-face {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    src: url(font/Microsoft.ttf) format("truetype");
+    }
+    @font-face {
+    font-family: "BR Sans Serif";
+    src: url(font/BadScript.ttf) format("truetype");
+    }
+    :root {
+        --red: #c34439;
+        --black: #202020;
+        --lightblack: #4E4E4E;
+        --gray: #BDBDBD;
+        --lightgray: #faf9f8;
+        --yellow: #FFB11B;
+    }
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--lightgray);
+        background-image: url(image/backgroundoutofcontainer.png);
+    }
+    a {
+        text-decoration: none;
+    }
+    .line {
+        border-bottom: 1px solid var(--gray);
+        width: 85%;
+        margin: 10px auto;
+    }
+    
+</style>
+<!-- css header footer -->
+<style>
+    header {
+        width: 100%;
+        height: 100px;
+        padding: 10px 100px;
+        background-color: #171717;
+        display: inline-grid;
+        grid-template-columns: 2fr 350px 4fr 1fr 137px;
+        gap: 10px;
+        justify-content: space-around;
+        align-items: center;
+    }
+    header>* {
+        text-align: center;
+    }
+    header * {
+        font-size: 18px;
+    }
+    header .logo {
+        width: 193px;
+        margin-bottom: 10px;
+    }
+    header .menu {
+        display: flex;
+        justify-content: space-around;
+        padding-left: 20px;
+    }
+    header .menu a {
+        color: white;
+        margin-right: 20px;
+    }
+    header .search-box {
+        border: 1px solid var(--gray);
+        padding: 5px 0px 5px 10px;
+        height: 42px;
+        border-radius: 21px;
+        width: 100%;
+        min-width: 150px;
+    }
+    header .search-box>* {
+        margin: auto;
+        vertical-align: middle;
+    }
+    header .search-box input {
+        outline: none;
+        border: none;
+        background-color: unset;
+        color: white;
+        width: 85%;
+    }
+    header .search-box input::placeholder {
+        color: white;
+    }
+    header .cart img {
+        height: fit-content;
+    }
+    header .account {
+        text-align: center;
+        background-color: var(--red);
+        padding: 5px;
+        border-radius: 5px;
+        width: 137px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    header .account:hover {
+        transform: scale(1.1);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    header .account>* {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0px 5px;
+        color: white;
+    }
+    footer {
+        width: 100%;
+        margin-top: 200px;
+        background-image: url('image/background-footer.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        padding: 10px 100px 50px;
+    }
+    footer .gallery {
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 1;
+        display: flex;
+        justify-content: space-around;
+    }
+    footer .gallery img {
+        border-radius: 10px;
+        width: 1fr;
+        height: fit-content;
+    }
+    footer .about {
+        color: var(--lightgray);
+        font-size: 20px;
+        width: 100%;
+        margin: 500px auto 100px;
+        text-align: center;
+        user-select: none;
+    }
+    footer .menu-box {
+        border: 1px solid white;
+        position: relative;
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        user-select: none;
+    }
+    footer .logo-footer {
+        width: 150px;
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        backdrop-filter: blur(50px);
+        user-select: none;
+    }
+    footer .footer-menu {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    footer .footer-menu a {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        margin: 0px 10px;
+    }
+    footer .social-icons {
+        vertical-align: middle;
+        text-align: right;
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+    footer .social-icons>img {
+        margin: 0px 5px;
+        width: 30px;
+    }
+    footer .footer-line {
+        grid-row: 2 / 3;
+        grid-column: 1 / 3;
+    }
+    footer .more-info {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+        text-align: right;
+    }
+    footer .more-info ul li {
+        color: white;
+        display: inline-block;
+        margin: 0px 20px;
+    }
+    @media (max-width: 1300px) {
+        footer .gallery img:nth-child(5) {
+            display: none;
+        }
+    }
+    @media (max-width: 1050px) {
+        footer .gallery img:nth-child(4) {
+            display: none;
+        }
+    }
+    @media (max-width: 780px) {
+        footer .gallery img:nth-child(3) {
+            display: none;
+        }
+    }
+</style>
+<!-- css trang -->
+<style>
+    .view-more {
+        display: flex;
+        width: 75%;
+        margin: 10px auto;
+        justify-content: end;
+        padding: 5px;
+    }
+    .view-more>p {
+        color: var(--red);
+        font-size: 15px;
+        font-weight: bold;
+        width: fit-content;
+        margin-right: 10px;
+    }
+    .view-more>img {
+        width: 20px;
+        height: fit-content;
+    }
+    .banner {
+        position: relative;
+        height: 500px;
+    }
+    .banner img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px 0px 10px 10px;
+    }
+    .special-text {
+        font-family: "BR Sans Serif";
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translate(-50%, 0px);
+        z-index: 1;
+        color: white;
+        font-size: 35px;
+        font-weight: bold;
+        text-shadow: 0px 0px 5px black;
+    }
+    .banner>.order-button {
+        bottom: 50px;
+        left: 50%;
+        transform: translate(-50%, 0px);
+        position: absolute;
+        color: white;
+        border: 1px solid white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-shadow: 0px 0px 5px black;
+        cursor: pointer;
+    }
+    .hot-categories {
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid var(--gray);
+        margin: 50px auto;
+        width: 1100px;
+        display: flex;
+        justify-content: space-around;
+        box-shadow: 2px 2px 2px var(--gray);
+    }
+    .hot-categories p {
+        padding: 8px 10px;
+        margin: 8px;
+        border-radius: 5px;
+    }
+    .hot-categories .selected-hot-categories {
+        background-color: var(--red);
+    }
+    .container {
+        padding: 10px 100px;
+    }
+    .title {
+        text-align: center;
+        color: var(--red);
+        font-weight: bold;
+        font-size: 25px;
+        margin: 2%;
+    }
+    .div-description {
+        text-align: center;
+        color: var(--lightblack);
+        font-size: 20px;
+    }
+    .products {
+        margin: 20px 0px;
+    }
+    .flex {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .product {
+        padding: 10px;
+        margin: 20px;
+        border: 1px solid var(--gray);
+        border-radius: 5px;
+        width: 250px;
+        display: grid;
+        position: relative;
+        gap: 10px 0px;
+        grid-template-columns: auto auto;
+        box-shadow: 2px 2px 5px var(--gray);
+        cursor: pointer;
+    }
+    .product-image {
+        margin: 20% 0px 90px;
+        margin-top: 23%;
+        width: 90%;
+        grid-column: 1 / 3;
+    }
+    .product-image:hover {
+        transform: scale(1.1);
+        transition: 0.5s;
+    }
+    .product-rating {
+        font-size: 20px;
+        color: gold;
+        text-shadow: 1px 1px 1px orange;
+    }
+    .product-name {
+        font-size: 20px;
+        color: var(--black);
+        font-weight: 600;
+    }
+    .product-short-description {
+        font-size: 15px;
+        color: var(--lightblack);
+    }
+    .product-original-price {
+        font-size: 18px;
+        text-decoration: line-through;
+        color: #BDBDBD;
+    }
+    .product-price {
+        font-size: 20px;
+        color: var(--black);
+        margin: auto 0px;
+        font-weight: 600;
+    }
+    .product-buttons {
+        text-align: right;
+        margin: auto 0px;
+        display: grid;
+        grid-template-columns: auto;
+        gap: 10%;
+    }
+    .product-buttons img {
+        display: inline-block;
+        padding: 5px;
+        width: 30px;
+        border-radius: 5px;
+    }
+    .product-buttons .product-button-cart {
+        background-color: var(--red);
+    }
+    .product-buttons .product-button-share {
+        background-color: var(--black);
+    }
+    .product-discount-tag {
+        position: absolute;
+        right: 20px;
+        top: -20px;
+    }
+    .discount-tag {
+        position: relative;
+    }
+    .discount-percentage {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: bold;
+    }
+    .categories {
+        width: 1000px;
+        margin: auto;
+    }
+    .category {
+        display: grid;
+        grid-template-columns: 75px auto;
+        width: 230px;
+        height: 75px;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--gray);
+        padding-right: 20px;
+        margin: 20px;
+    }
+    .category .image-box {
+        background-color: var(--red);
+    }
+    .category .image-box img {
+        width: 75px;
+        height: 75px;
+    }
+    .category .text-box {
+        justify-self: right;
+        margin: auto 0px;
+    }
+    .category-name {
+        font-size: 20px;
+    }
+    .category-product-count {
+        font-size: 15px;
+    }
+</style>
+<!-- css chitiet -->
+    <style>
+.line {
+    border-bottom: 1px solid var(--gray);
+    width: 1100px;
+    margin: 7% auto;
+}
+.title {
+    text-align: center;
+    color: var(--red);
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.detail-product {
+    display: grid;
+    width: 1100px;
+    margin: 3% auto;
+    grid-template-columns: repeat(2, auto);
+}
+.detail-product .product-image {
+    grid-column: 1 / 2;
+    grid-row: 1 / 9;
+    height: fit-content;
+}
+.product-description{
+    display: grid;
+    grid-template-columns: auto;
+    gap: 2%;
+}
+.detail-product .product-path {
+    color: #289FD3;
+    margin: 2.5% 0;
+}
+.detail-product .product-line {
+    border-bottom: 1px solid var(--gray);
+    width: 100%;
+    height: 1px;
+    margin: 1% 0;
+  }
+.detail-product .product-name {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 2% 0;
+}
+.detail-product .product-description {
+    color: var(--lightblack);
+    line-height: 30px;
+    text-align: justify;
+    margin: 1% 0;
+}
+.detail-product .product-rating {
+    color: var(--yellow);
+    font-size: 20px;
+}
+.detail-product .product-rating span {
+    color: var(--lightblack);
+    margin: 2% 0;
+}
+.detail-product .product-original-price {
+    text-decoration: line-through;
+    color: var(--gray);
+    margin-top: 3%;
+}
+.detail-product .product-price {
+    color: var(--red);
+    font-size: 35px;
+    font-weight: bold;
+    margin: 2% 0;
+}
+.detail-product .product-buttons {
+    width: 100%;
+    margin: 2% 0;
+}
+.dualbutton{
+    display: flex;
+    gap: 20px;
+}
+.detail-product .product-buttons .button-addtocart {
+    background-color: var(--red);
+    padding: 10px 30px;
+    padding-top: -1.5%;
+    border-radius: 5px;
+    width: fit-content;
+    margin: 2% 0;
+}
+.detail-product .product-buttons .button-addtocart * {
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    margin: 2% 0;
+}
+.button-buynow{
+    padding: 0 20px;
+    padding-top: 1.5%;
+    border-radius: 5px;
+    width: 200px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin: 2% 0;
+    border: solid #C34439;
+    color: #C34439;
+}
+.button-buynow:hover{
+    transition: 0.3s;
+    color: #faf9f8;
+    background-color: #C34439;
+    border: none;
+    padding-top: 1.8%;
+}
+</style>
+<!-- css bình luận -->
+<style>
+.comment-box {
+  width: 1100px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 90% 10%;
+  gap: 10px;
+}
+.comment-box .comments {
+  width: 100%;
+  overflow-y: scroll;
+  height: 500px;
+  justify-content: space-between;
+}
+.comment-box .column {
+  column-count: 2;
+  column-gap: 10px;
+}
+.comment-box .comments .comment {
+  width: 480px;
+  height: fit-content;
+  margin-bottom: 20px;
+  background-color: white;
+  border: 1px solid var(--gray);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 5px;
+  display: grid;
+}
+.comment-box .comments .comment .left {
+  padding: 10px;
+  grid-column: 1 / 2;
+}
+.comment .user-avatar {
+  border-radius: 50%;
+}
+.comment-box .comments .comment .right {
+  padding: 10px;
+  grid-column: 2 / 3;
+}
+.comment .user-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.comment .time {
+  color: var(--lightblack);
+  font-weight: lighter;
+}
+.comment .rating {
+  color: var(--yellow);
+  font-size: 18px;
+  margin: 10px 0px;
+}
+.comment .content {
+  color: var(--lightblack);
+  font-size: 15px;
+}
+.filter-box {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0px;
+}
+.filter-box>div:first-child>* {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 20px;
+}
+.filter-box>div:first-child>p {
+  font-size: 20px;
+}
+.filter-box>div:not(.filter-box>div:first-child) {
+  width: 100%;
+  text-align: left;
+  padding-left: 20px;
+  margin: 5px 0px;
+}
+.cmtinput{
+    text-align: right;
+    height:500%;
+    align-items: center;
+}
+.cmtinput > input{
+    position: relative;
+    justify-content: center;
+    border: 2px solid rgba(223, 223, 223, 0.873);
+    width: 70%;
+    height: 13%;
+    margin: 40px;
+    border-radius: 10px;
+}
+.cmtinput > input::placeholder{
+    padding-left: 5%;
+    font-size: 16px;
+}
+input[type="text"]:not(:placeholder-shown) {
+    color: #333;
+    font-style: normal;
+    font-size: 16px;
+}
+.cmtinput>.send{
+    position: absolute;
+    width: 2%;
+    padding-top: 4%;
+}
+
+    </style>
+
+<!-- css soluong -->
+<style>
+    .soluong{
+        display: flex;
+    }
+    .soluong > input{
+        width: 60px;
+        border: 1px solid rgb(188, 188, 188);
+        border-radius: 3px;
+        text-align: center;
+    }
+    .soluong > button{
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 5px;
+        margin: 0 0.5%;
+        cursor: pointer;
+    }
+    .soluong > button:hover{
+        background-color: #C34439;
+        color: #faf9f8;
+        transition: 0.3s;
+    }
+    .product-buttons .soluong button:hover > svg {
+color: white;
+    }
+</style>
+<!-- css monanhot -->
+<style>
+    .monanhot{
+        position: relative;
+    }
+    .monanhot-tieude{
+        text-align: center;
+        padding: 5px;
+    }
+    .monanhot-tieude >h2{
+        color: #c34439;
+    }
+    .monanhot-tieude >p{
+        display: block;
+        padding: 10px;
+        width: 50%;
+        margin-block-start: 0.83em;
+        margin-block-end: 0.83em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin: auto;
+}
+</style>
+    <!-- css item sanpham -->
+    <style>
+    .monanhot-sanpham{
+        padding: 3% 8%;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 50px; 
+        justify-content: center;
+    }
+    .monanhot-sanpham-item{
+        position: relative;
+        padding: 5%;
+        border-radius: 10px;
+        border: 1px solid #4e4e4e16;
+        background-color: rgb(245, 245, 245)
+    }
+    .monanhot-sanpham-item > .image{
+        width: 100%;
+    }
+    .monanhot-sanpham-item > h3{
+        padding-top: 5%;
+        text-align: center;
+        font-size: 150%;
+        color: #202020;
+    }
+    .monanhot-sanpham-item > .danhgia{
+        width: 30%;
+        margin: 0 35%;
+    }
+    .monanhot-sanpham-item > p{
+        text-align: center;
+        font-size: small;
+        padding: 7% 0;
+    }
+    .monanhot-sanpham-item > .price{
+        color: #c34439;
+        font-weight: 700;
+        padding-bottom: 15%;
+    }
+    .monanhot-sanpham-item-button > button{
+        background-color: #c34439;
+        border: none;
+        color: #ffffff;
+        font-weight: 600;
+        padding: 5%;
+        border-radius: 5px;
+        width: 60%;
+        cursor: pointer;
+        transition: transform 0.5s;
+    }
+    .monanhot-sanpham-item-button > button:hover {
+        transform: scale(1.1); 
+    }
+    .monanhot-sanpham-item-button > .cart{
+        width: 17%;
+        margin-left: 10%;
+        cursor: pointer;
+        transition: transform 0.5s;
+    }
+    .monanhot-sanpham-item-button > .share{
+        width: 17%;
+        margin-left: 2%;
+        cursor: pointer;
+        transition: transform 0.5s;
+    }
+    .monanhot-sanpham-item-button >.cart:hover {
+        transform: scale(1.1); 
+    }
+    .monanhot-sanpham-item-button >.share:hover {
+        transform: scale(1.1); 
+    }
+    .monanhot-sanpham-item-button{
+        display: flex;
+    }
+    .monanhot > img{
+        width: 10%;
+        margin-right: 0;
+        cursor: pointer;
+    }
+    .monanhot-sanpham-item >.sale >img{
+        position: absolute;
+        z-index: 1;
+        width: 25%;
+        margin-left: 60%;
+        margin-top: -10%;
+    }
+</style>
+
+<!-- css soluong -->
+<style>
+    .sotrang{
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .sotrang > p{
+        margin: 2%;
+    }
+    .sotrang > .arrow{
+        width: 10px;
+        margin: 2%;
+    }
+
+</style>
+<body>
+    <header>
+        <img src="image/horizontal-logo-red.png" alt="" class="logo">
+        <img src="image/logo-red.png" alt="" class="logo" style="display: none;">
+        <div class="menu">
+            <a href="">Trang chủ</a>
+            <a href="">Thực đơn</a>
+            <a href="">Giới thiệu</a>
+        </div>
+        <div class="search-box">
+            <img src="image/icon/search.png" alt="">
+            <input type="text" placeholder="Tìm món">
+        </div>
+        <a href="" class="cart">
+            <img src="image/icon/cart.png" alt="">
+        </a>
+        <div class="account">
+            <img src="image/icon/user.png" alt="">
+            <p>Tài khoản</p>
+        </div>
+    </header>
+
+
+    <main>
+
+        <div class="detail-product">
+            <img class="product-image" src="image/unsplash_WjdOYhgTGCM.png" alt="">
+
+            <div class="product-description">
+                
+                <div class="product-path">
+                    Mì > Mì Ramen
+                </div>
+                <div class="product-line"></div>
+                <div class="product-name">Mì Ramen</div>
+                <div class="product-description">Mì Ramen là một món ăn truyền thống của Nhật Bản. Nó bao gồm một tô mì mềm, 
+                    thấm đẫm trong nước dùng hương thịt đậm đà, được phục vụ cùng các thành phần như thịt heo, trứng, 
+                    rau và một số gia vị như tương miso hoặc tương đậu nành. Mì Ramen có hương vị độc đáo, 
+                    hấp dẫn và thường được xem như một món ăn truyền thống của nền ẩm thực Nhật Bản.
+                </div>
+                <div class="product-rating">★★★★★ <span>( 200 lượt đánh giá ) </span></span></div>
+                <div class="product-original-price">30.000 vnđ</div>
+                <div class="product-price">30.000 vnđ</div>
+                <div class="product-buttons">
+
+                    <div class="soluong">
+                        <button onclick="decreaseValue()">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                        </button>
+                        
+                        <input type="text" name="soluong" class="soluong-input" value="1">
+                        
+                        <button onclick="increaseValue()">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <script>
+                        function decreaseValue() {
+                            var inputElement = document.querySelector('.soluong-input');
+                            var currentValue = parseInt(inputElement.value, 10);
+                            
+                            if (currentValue > 1) {
+                                inputElement.value = currentValue - 1;
+                            }
+                        }
+                    
+                        function increaseValue() {
+                            var inputElement = document.querySelector('.soluong-input');
+                            var currentValue = parseInt(inputElement.value, 10);
+                    
+                            inputElement.value = currentValue + 1;
+                        }
+                    </script>
+                    
+                    <div class="dualbutton">
+                        <div class="button-addtocart">
+                            <img src="image/icon/cart.png" alt="">
+                            <p>Thêm vào giỏ hàng</p>
+                        </div>
+                        <div class="button-buynow">
+                            <p class="muangay">Mua ngay</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        
+        <div class="line"></div>
+        <div class="title">Đánh giá món ăn</div>
+        <div class="comment-box">
+            <div class="comments">
+                <div class="column">
+                    <div class="comment">
+                        <div class="left">
+                            <img class="user-avatar" src="image/avt.png" alt="">
+                        </div>
+                        <div class="right">
+                            <p class="user-name">nguyễn văn a</p>
+                            <p class="time">10/08/2023 12h20</p>
+                            <p class="rating">★★★★★</p>
+                            <p class="content">"Lorem ipsum dolor sit amet consectetur. Consequat nunc adipiscing ornare sit porttitor risus mattis. Aliquam fermentum viverra mollis quisque sed facilisis accumsan elit."</p>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="left">
+                            <img class="user-avatar" src="image/avt.png" alt="">
+                        </div>
+                        <div class="right">
+                            <p class="user-name">nguyễn văn a</p>
+                            <p class="time">10/08/2023 12h20</p>
+                            <p class="rating">★★★★★</p>
+                            <p class="content">"Lorem ipsum dolor sit amet consectetur. Cras orci massa nisi molestie ullamcorper velit. Libero consectetur ac tortor sed viverra dapibus. Morbi non sodales ante pulvinar elementum praesent non amet.
+                                Dictumst consequat vitae adipiscing id orci ullamcorper. Consequat nunc adipiscing ornare sit porttitor risus mattis. Aliquam fermentum viverra mollis quisque sed facilisis accumsan elit."</p>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="left">
+                            <img class="user-avatar" src="image/avt.png" alt="">
+                        </div>
+                        <div class="right">
+                            <p class="user-name">nguyễn văn a</p>
+                            <p class="time">10/08/2023 12h20</p>
+                            <p class="rating">★★★★★</p>
+                            <p class="content">"Lorem ipsum dolor sit amet consectetur. Cras orci massa nisi molestie ullamcorper velit. Libero consectetur ac tortor sed viverra dapibus. Morbi non sodales ante pulvinar elementum praesent non amet.
+                                Dictumst consequat vitae adipiscing id orci ullamcorper. Consequat nunc adipiscing ornare sit porttitor risus mattis. Aliquam fermentum viverra mollis quisque sed facilisis accumsan elit."</p>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="left">
+                            <img class="user-avatar" src="image/avt.png" alt="">
+                        </div>
+                        <div class="right">
+                            <p class="user-name">nguyễn văn a</p>
+                            <p class="time">10/08/2023 12h20</p>
+                            <p class="rating">★★★★★</p>
+                            <p class="content">"Lorem ipsum dolor sit amet consectetur. Cras orci massa nisi molestie ullamcorper velit. Libero consectetur ac tortor sed viverra dapibus. Morbi non sodales ante pulvinar elementum praesent non amet.
+                                Dictumst consequat vitae adipiscing id orci ullamcorper. Consequat nunc adipiscing ornare sit porttitor risus mattis. Aliquam fermentum viverra mollis quisque sed facilisis accumsan elit."</p>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="left">
+                            <img class="user-avatar" src="image/avt.png" alt="">
+                        </div>
+                        <div class="right">
+                            <p class="user-name">nguyễn văn a</p>
+                            <p class="time">10/08/2023 12h20</p>
+                            <p class="rating">★★★★★</p>
+                            <p class="content">"Lorem ipsum dolor sit amet consectetur. Cras orci massa nisi molestie ullamcorper velit. Libero consectetur ac tortor sed viverra dapibus. Morbi non sodales ante pulvinar elementum praesent non amet.
+                                Dictumst consequat vitae adipiscing id orci ullamcorper. Consequat nunc adipiscing ornare sit porttitor risus mattis. Aliquam fermentum viverra mollis quisque sed facilisis accumsan elit."</p>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="left">
+                            <img class="user-avatar" src="image/avt.png" alt="">
+                        </div>
+                        <div class="right">
+                            <p class="user-name">nguyễn văn a</p>
+                            <p class="time">10/08/2023 12h20</p>
+                            <p class="rating">★★★★★</p>
+                            <p class="content">"Lorem ipsum dolor sit amet consectetur. Cras orci massa nisi molestie ullamcorper velit. Libero consectetur ac tortor sed viverra dapibus. Morbi non sodales ante pulvinar elementum praesent non amet.
+                                Dictumst consequat vitae adipiscing id orci ullamcorper. Consequat nunc adipiscing ornare sit porttitor risus mattis. Aliquam fermentum viverra mollis quisque sed facilisis accumsan elit."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="filter-box">
+                <div>
+                    <p>Lọc</p>
+                    <img src="image/icon/filter.png" alt="">
+                </div>
+                <div>
+                    <input type="radio" name="filter" id="filter-all">
+                    <label for="filter-all">Tất cả</label>
+                </div>
+                <div>
+                    <input type="radio" name="filter" id="filter-5">
+                    <label for="filter-5">5 <span style="color: #FFB11B;">★</span></label>
+                </div>
+                
+                <div>
+                    <input type="radio" name="filter" id="filter-4">
+                    <label for="filter-4">4 <span style="color: #FFB11B;">★</span></label>
+                </div>
+                
+                <div>
+                    <input type="radio" name="filter" id="filter-3">
+                    <label for="filter-3">3 <span style="color: #FFB11B;">★</span></label>
+                </div>
+                
+                <div>
+                    <input type="radio" name="filter" id="filter-2">
+                    <label for="filter-2">2 <span style="color: #FFB11B;">★</span></label>
+                </div>
+                
+                <div>
+                    <input type="radio" name="filter" id="filter-1">
+                    <label for="filter-1">1 <span style="color: #FFB11B;">★</span></label>
+                </div>
+            </form>
+
+            <div class="cmtinput">
+                <input type="text" placeholder="Đánh giá">
+                    <img class="send" src="image/send.png" alt="Gửi">
+            </div>
+
+        </div>
+        <div class="line"></div>
+        <div class="monanhot">
+            <div class="monanhot-tieude">
+                <h2>Các món ăn tưởng tự</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqu</p>
+            </div>
+
+            <div class="monanhot-sanpham">
+                <div class="monanhot-sanpham-item">
+                    <img class="image" src="image/garan.png" alt>
+                    <h3>Gà rán</h3>
+                    <img class="danhgia" src="image/danhgia.png" alt>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqu</p>
+                    <h3 class="price">39.000 vnđ</h3>
+                    <div class="monanhot-sanpham-item-button">
+                        <button>Mua ngay</button>
+                        <img class="cart" src="image/cart.png" alt="cart">
+                        <img class="share" src="image/share.png" alt="share">
+                    </div>
+                </div>
+
+                <div class="monanhot-sanpham-item">
+                    <img class="image" src="image/garan.png" alt>
+                    <h3>Gà rán</h3>
+                    <img class="danhgia" src="image/danhgia.png" alt>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqu</p>
+                    <h3 class="price">39.000 vnđ</h3>
+                    <div class="monanhot-sanpham-item-button">
+                        <button>Mua ngay</button>
+                        <img class="cart" src="image/cart.png" alt="cart">
+                        <img class="share" src="image/share.png" alt="share">
+                    </div>
+                </div>
+
+                <div class="monanhot-sanpham-item">
+                    <img class="image" src="image/garan.png" alt>
+                    <h3>Gà rán</h3>
+                    <img class="danhgia" src="image/danhgia.png" alt>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqu</p>
+                    <h3 class="price">39.000 vnđ</h3>
+                    <div class="monanhot-sanpham-item-button">
+                        <button>Mua ngay</button>
+                        <img class="cart" src="image/cart.png" alt="cart">
+                        <img class="share" src="image/share.png" alt="share">
+                    </div>
+                </div>
+
+                <div class="monanhot-sanpham-item">
+                    <img class="image" src="image/garan.png" alt>
+                    <h3>Gà rán</h3>
+                    <img class="danhgia" src="image/danhgia.png" alt>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqu</p>
+                    <h3 class="price">39.000 vnđ</h3>
+                    <div class="monanhot-sanpham-item-button">
+                        <button>Mua ngay</button>
+                        <img class="cart" src="image/cart.png" alt="cart">
+                        <img class="share" src="image/share.png" alt="share">
+                    </div>
+                </div>
+
+                <div class="monanhot-sanpham-item">
+                    <img class="image" src="image/garan.png" alt>
+                    <h3>Gà rán</h3>
+                    <img class="danhgia" src="image/danhgia.png" alt>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqu</p>
+                    <h3 class="price">39.000 vnđ</h3>
+                    <div class="monanhot-sanpham-item-button">
+                        <button>Mua ngay</button>
+                        <img class="cart" src="image/cart.png" alt="cart">
+                        <img class="share" src="image/share.png" alt="share">
+                    </div>
+                </div>
+
+                <div class="monanhot-sanpham-item">
+                    <img class="image" src="image/garan.png" alt>
+                    <h3>Gà rán</h3>
+                    <img class="danhgia" src="image/danhgia.png" alt>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqu</p>
+                    <h3 class="price">39.000 vnđ</h3>
+                    <div class="monanhot-sanpham-item-button">
+                        <button>Mua ngay</button>
+                        <img class="cart" src="image/cart.png" alt="cart">
+                        <img class="share" src="image/share.png" alt="share">
+                    </div>
+                </div>
+
+                <div class="monanhot-sanpham-item">
+                    <img class="image" src="image/garan.png" alt>
+                    <h3>Gà rán</h3>
+                    <img class="danhgia" src="image/danhgia.png" alt>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqu</p>
+                    <h3 class="price">39.000 vnđ</h3>
+                    <div class="monanhot-sanpham-item-button">
+                        <button>Mua ngay</button>
+                        <img class="cart" src="image/cart.png" alt="cart">
+                        <img class="share" src="image/share.png" alt="share">
+                    </div>
+                </div>
+
+                <div class="monanhot-sanpham-item">
+                    <img class="image" src="image/garan.png" alt>
+                    <h3>Gà rán</h3>
+                    <img class="danhgia" src="image/danhgia.png" alt>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqu</p>
+                    <h3 class="price">39.000 vnđ</h3>
+                    <div class="monanhot-sanpham-item-button">
+                        <button>Mua ngay</button>
+                        <img class="cart" src="image/cart.png" alt="cart">
+                        <img class="share" src="image/share.png" alt="share">
+                    </div>
+                </div>
+
+            </div>
+            <img class="view-more" src="image/xemthem.png" alt>
+            <div class="sotrang">
+                    <img class="arrow" src="image/leftarrow1.png" alt="">
+                    <p>1</p>
+                    <p>2</p>
+                    <p>3</p>
+                    <p>4</p>
+                    <p>5</p>
+                    <img class="arrow" src="image/rightarrow1.png" alt="">
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <div class="gallery">
+            <img style="margin-top: -100px;" src="image/Image.png" alt="">
+            <img style="margin-top: -10px;" src="image/Image-1.png" alt="">
+            <img style="margin-top: -50px;" src="image/Image-2.png" alt="">
+            <img style="margin-top: -100px;" src="image/Image-3.png" alt="">
+            <img style="margin-top: -50px;" src="image/Image-4.png" alt="">
+        </div>
+        <div class="about">
+            ChickCuisine tự hào cung cấp những món ăn ngon nhất từ khắp nơi trên thế giới đến ngay tận bàn ăn của bạn. Chúng tôi cam kết về chất lượng và sự hài lòng của khách hàng. Hãy theo dõi chúng tôi trên các trang mạng xã hội để cập nhật thông tin mới nhất và các ưu đãi đặc biệt!
+        </div>
+        <div class="menu-box">
+            <img class="logo-footer" src="image/logo-white.png" alt="">
+            <div class="footer-menu">
+                <a href="">Trang chủ</a>
+                <a href="">Thực đơn</a>
+                <a href="">Giới thiệu</a>
+            </div>
+            <div class="social-icons">
+                <img src="image/icon/Vector.png" alt="">
+                <img src="image/icon/Vector-1.png" alt="">
+                <img src="image/icon/Vector-2.png" alt="">
+                <img src="image/icon/Vector-3.png" alt="">
+            </div>
+            <div class="line footer-line"></div>
+            <div class="more-info">
+                <ul>
+                    <li>Mở cửa 6h-23h mỗi ngày</li>
+                    <li>Tp. Hồ Chí Minh</li>
+                    <li>Hotline: 0903252xxx</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

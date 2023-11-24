@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Design Example</title>
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+.main-section {
+    margin-bottom: 30px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 767px) {
+    /* CSS cho màn hình nhỏ */
+    header {
+        font-size: 18px;
+    }
+
+    nav ul li {
+        margin-right: 10px;
+    }
+
+    .product {
+        padding: 5px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    /* CSS cho màn hình vừa */
+    header {
+        font-size: 24px;
+    }
+
+    nav ul li {
+        margin-right: 15px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Responsive Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="main-section">
+            <h2>Welcome to Our Website</h2>
+            <p>This is a simple example of a responsive website.</p>
+        </section>
+
+        <section class="main-section">
+            <h2>Featured Products</h2>
+            <div class="product">
+                <img src="product1.jpg" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>Description of Product 1.</p>
+            </div>
+            <div class="product">
+                <img src="product1.jpg" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>Description of Product 1.</p>
+            </div>
+            <div class="product">
+                <img src="product1.jpg" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>Description of Product 1.</p>
+            </div>
+            <div class="product">
+                <img src="product1.jpg" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>Description of Product 1.</p>
+            </div>
+            <!-- More products... -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 My Responsive Website</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!-- css global -->
+<style>
+    :root {
+        --red: #c34439;
+        --black: #202020;
+        --lightblack: #4E4E4E;
+        --gray: #BDBDBD;
+        --lightgray: #faf9f8;
+        --yellow: #FFB11B;
+    }
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        color: var(--black);
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--lightgray);
+        
+        color: var(--lightblack);
+    }
+    a {
+        text-decoration: none;
+    }
+    /* Đường gạch ngang */
+    .line {
+        border-bottom: 1px solid var(--gray);
+        width: 100%;
+        margin: 10px auto;
+    }
+    .whitediv {
+        background-color: white;
+        border: 1px solid var(--gray);
+        box-shadow: 0px 0px 5px var(--gray);
+        border-radius: 10px;
+            overflow: hidden;
+    }
+    
+</style>
+<style>
+    .popup-background {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: fixed;
+        z-index: 100;
+        top: 0px;
+        left: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .popup-form .title {
+        color: var(--lightblack);
+        font-weight: 600;
+    }
+    .popup-form {
+        background-color: white;
+        border: 1px solid var(--gray);
+        border-radius: 10px;
+        width: 500px;
+        height: fit-content;
+        padding: 15px;
+    }
+    .popup-form > :not(:last-child) {
+        margin-bottom: 15px;
+    }
+    .popup-form input {
+        width: 100%;
+        height: 30px;
+        border: 1px solid var(--gray);
+        border-radius: 5px;
+        outline: unset;
+        padding-left: 15px;
+    }
+    .popup-form .buttons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 30px;
+    }
+    .popup-form .buttons div {
+        background-color: var(--red);
+        width: 100px;
+        color: white;
+        border: unset;
+        height: 100%;
+        border-radius: 5px;
+        font-weight: 600;
+        margin-left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<div class="popup-background">
+    <div action="" class="popup-form">
+        <p class="title">Ghi chú</p>
+        <input type="text">
+        <div class="buttons">
+            <div>Hủy</div>
+            <div>Xác nhận</div>
+        </div>
+    </div>
+</div>

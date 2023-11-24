@@ -1,0 +1,77 @@
+footer {
+  margin-top: 200px;
+  background-image: url('/ChickCuisine/image/background-footer.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  padding: 10px 0px 50px;
+}
+footer .gallery {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+footer .gallery img {
+  border-radius: 10px;
+  width: 250px;
+  height: fit-content;
+  box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.5);
+}
+footer .about {
+  color: var(--lightgray);
+  font-size: 20px;
+  width: 800px;
+  margin: 100px auto;
+  text-align: center;
+}
+footer .menu-box {
+  border: 1px solid white;
+  position: relative;
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+footer .logo-footer {
+  width: 150px;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(50px);
+}
+footer .footer-menu {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+footer .footer-menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  margin: 0px 10px;
+}
+footer .social-icons {
+  vertical-align: middle;
+  text-align: right;
+  
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+footer .social-icons>img {
+  margin: 0px 5px;
+}
+footer .footer-line {
+  grid-row: 2 / 3;
+  grid-column: 1 / 3;
+}
+footer .more-info {
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+  text-align: right;
+}
+footer .more-info ul li {
+  color: white;
+  display: inline-block;
+  margin: 0px 20px;
+}

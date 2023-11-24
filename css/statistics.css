@@ -1,0 +1,109 @@
+.statistics {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 69% 30%;
+    gap: 15px;
+    height: 300px;
+}
+.statistics>* {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid var(--gray);
+}
+.statistics .revenue {
+    display: grid;
+    grid-template-columns: 35% 65%;
+}
+.statistics .revenue .left {
+    display: block;
+    width: 100%;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.statistics .revenue .left p {
+    height: 20px;
+}
+.statistics .revenue .right {
+    width: 100%;
+    height: 100%;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin-top: 20px;
+}
+.statistics .revenue .bottom {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+}
+.statistics .revenue p {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+.statistics .category {
+    display: block;
+}
+.statistics .category>p {
+    height: 20px;
+}
+.statistics-total {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.statistics-total>* {
+    width: 300px;
+    height: 120px;
+    border-radius: 10px;
+    margin-top: 15px;
+    position: relative;
+}
+.statistics-total .product {
+    background: linear-gradient(-45deg, #6692D9 25.73%, #45C4F1 72.52%);
+}
+.statistics-total .category {
+    background: linear-gradient(-45deg, #5546B9 26.29%, #875FC0 74.94%);
+}
+.statistics-total .user {
+    background: linear-gradient(-45deg, #B954A4 28.01%, #EC4887 66.14%);
+}
+.statistics-total .invoice {
+    background: linear-gradient(-45deg, #F57F59 32.22%, #FFB82C 66.53%);
+}
+.statistics-total .feedback {
+    background: linear-gradient(-45deg, #57D2CA 33.73%, #45F1A9 72.23%);
+}
+.statistics-total svg{
+    fill: white;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.statistics-total>* .name {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+.statistics-total>* .count {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 10px;
+    text-align: right;
+}
+
+
+
+/*-----------*/
+chart {
+    background-color: red;
+    height: 200px;
+    width: 100%;
+}

@@ -1,0 +1,393 @@
+<style>
+  .container {
+    margin: auto;
+    width: 1236px;
+  }
+  
+  .container ul {
+    width: 1125px;
+    height: 43px;
+    display: flex;
+    /* background-color: #BDBDBD; */
+    margin: auto;
+    padding: 0;
+    justify-items: center;
+  }
+  .container ul > li:nth-child(2){
+    margin: 0 24%;
+    width: 210px;
+    
+  }
+  .container ul > li img {
+    filter: invert(70%);
+    margin-right: 5%;
+  }
+  .container ul > li {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    width: 130px;
+    padding: 1% 0%;
+    color: #4E4E4E;
+    font-family: Segoe UI;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 1% 2%;
+  }
+  .menucon ul li.ghim {
+    background: #C34439;
+    border-radius: 5px;
+  }
+  
+  .menucon ul li.ghim img {
+    filter: invert(0);
+  }
+  
+  .menucon ul li.ghim a {
+    color: #FFF;
+  }
+  .menucon {
+    border-radius: 10px;
+    border: 1px solid #BDBDBD;
+    background: #FFF;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 1236px;
+    height: 84px;
+    flex-shrink: 0;
+    display: flex;
+  }
+  
+  .container ul li a {
+    text-decoration: none;
+    color: #4E4E4E;
+  }
+
+  .mrt-3 {
+    margin-top: 3%;
+  }
+ 
+  .user{
+    float: left;
+    width: 65%;
+  }
+  .information{
+    float: right;
+    width: 33%;
+    
+  }
+  .clear{
+    clear: both;
+  }
+  .khungform{
+    padding: 2%;
+    border-radius: 10px;
+    border: 1px solid #BDBDBD;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  
+  .information {
+    border-radius: 10px;
+    border: 1px solid #BDBDBD;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  
+  .user .khungform .grid{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+  }
+  .nguoinhan input{
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+  .diachi input{
+    padding-left: 1%;
+  }
+  .nguoinhan{
+    color: #4E4E4E;
+    font-family: Segoe UI;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  label {
+    color: #4E4E4E;
+    font-family: Segoe UI;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 3%;
+  }
+  
+  input {
+    margin-top: 3%;
+    width: 100%;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 1px solid #BDBDBD;
+    background: #FFF;
+    padding-left: 2%;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25) inset;
+  }
+   .title{
+    color: #ffff;
+    text-align: center;
+    font-family: Segoe UI;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 640;
+    line-height: normal;
+    border-radius: 10px 10px 0px 0px;
+    border: 1px solid #BDBDBD;
+    
+    background: #C34439;
+    padding: 3%;
+  }
+  .information .thongtin .count-sp{
+    color: #4E4E4E;
+    font-family: Segoe UI;
+    font-size: 20px;
+    font-style: normal;
+    padding: 3% 0;
+    clear: both;
+  }
+  .information .thongtin {
+    padding: 5%;
+  }
+  .gachchan{
+    width: 369px;
+    height: 1px;
+    background: #BDBDBD;
+    margin: 5% 0;
+  }
+  .information .thongtin .count-sp a:nth-child(1){
+    float: left;
+  }
+  .information .thongtin .count-sp a:nth-child(2){
+    float: right;
+    color: #4E4E4E;
+    text-align: right;
+    font-family: Segoe UI;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .information .thongtin .magiamgia {
+    display: flex;
+    /* background-color: #4E4E4E; */
+    clear: both;
+    align-items: center;
+    height: 33px;
+    padding: 6% 0 3% 0;
+  }
+  .information .thongtin .magiamgia input{
+    border-radius: 3px;
+    width: 323px;
+    height: 100%;
+    border: 1px solid #3f3f3f;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+    background: #FFF;
+    box-shadow: 0px 0px rgb(0, 0, 0);
+    margin-right: 3%;
+  }
+  
+.chuthich{
+    text-align: right;
+    color: #C34439;
+    font-family: Segoe UI;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.icon{
+   text-align: center;
+   padding-top: 3%;
+}
+.ghichu{
+  width: 214px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  color: #FFF;
+}
+
+.ghichu button{
+  border-radius: 5px;
+  border: 1px solid #C34439;
+  background: #FFF;
+  flex-shrink: 0;
+  height: 100%;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  width: 65%;
+  line-height: normal;
+  color: #C34439;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ghichu button > svg {
+  margin-right: 5%;
+}
+.ghichu input{
+  height: 100%;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-family: Segoe UI;
+  color: #FFF;
+  width: 214px;
+  height: 38px;
+  border-radius: 5px;
+  background: #C34439;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0px 0px black;
+  margin-left: 8%;
+}
+</style>
+<div class="container">
+    <div class="menucon">
+        <ul>
+            <li><img src="image/icon/Vector.png" alt=""><a href="#">Giỏ hàng</a></li>
+            <li><img src="image/icon/Vector.png"><a href="#">Kho mã giảm giá</a></li>
+            <li><img src="image/icon/Vector.png"><a href="#">Sổ địa chỉ</a></li>
+        </ul>
+    </div>
+    <div class="check-information mrt-3">
+        <div class="user ">
+            <div class="khungform">
+              <form action="">
+                <div class="grid">
+                  <div class="left">
+                    <label for="username1">Tên người dùng</label><br>
+                    <input type="text" id="username1" placeholder="Tên người dùng">
+                  </div>
+                  <div class="right">
+                    <label for="username2">Tên người dùng</label><br>
+                    <input type="text" id="username2" placeholder="Tên người dùng">
+                  </div>
+                </div>
+                <div class="diachi mrt-3">
+                  <label for="username2">Tên người dùng</label><br>
+                  <input type="text" id="username2" placeholder="Tên người dùng">
+                </div>
+                <div class="nguoinhan">
+                  <input type="checkbox" id="checkbox_diachi" onchange="toggleNguoiNhan()"> <a>Giao đến địa chỉ khác?</a>
+                </div>
+                <div id="nguoinhan_section" style="display: none;">
+                  <div class="grid mrt-3">
+                    <div class="left">
+                      <label for="username1">Tên người dùng</label><br>
+                      <input type="text" id="username1" placeholder="Tên người dùng">
+                    </div>
+                    <div class="right">
+                      <label for="username2">Tên người dùng</label><br>
+                      <input type="text" id="username2" placeholder="Tên người dùng">
+                    </div>
+                  </div>
+                  <div class="diachi mrt-3">
+                    <label for="username2">Tên người nhận</label><br>
+                    <input type="text" id="username2" placeholder="Tên người dùng">
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+        <div class="information">
+                <div class="title">
+                    Thông tin thanh toán
+                </div>
+                <div class="thongtin">
+                    <div class="count-sp">
+                        <a>Tổng sản phẩm</a>
+                        <a>10</a>
+                    </div>
+                    <div class="count-sp">
+                        <a>Tạm tính</a>
+                        <a>30,000 vnđ</a>
+                    </div>
+                    <div class="count-sp">
+                        <a>Tổng giảm giá sản phẩm</a>
+                        <a style="color: #C34439;">3,000 vnđ</a>
+                    </div>
+                    <div class="magiamgia mrt-3">
+                        <input type="text"> 
+                        <img src="image/icon/Group 109.png" width="33px" height="33px">
+                    </div>
+                    <div class="count-sp">
+                        <a>Mã giảm giá</a>
+                        <a style="color: #C34439;">3,000 vnđ</a>
+                        
+                    </div>
+                    <br><br>
+                    <div class="gachchan clear">
+                    </div>
+                    <div class="count-sp clear" style="font-weight: 600;" >
+                        <a>Tổng tiền</a>
+                        <a style="color: #C34439;">24,000 vnđ</a>
+                        
+                    </div>
+                        <br><br>
+                        <br>
+                    <div class="icon clear mrb-5">
+                        <div class="ghichu ">
+                          <button class="custom-button">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19" viewBox="0 0 15 19" fill="none">
+                              <path d="M3.5625 0.59375C3.5625 0.265834 3.29667 0 2.96875 0C2.64083 0 2.375 0.265834 2.375 0.59375V1.1875H1.78125C0.797489 1.1875 0 1.98499 0 2.96875V17.2188C0 18.2025 0.797489 19 1.78125 19H8.3125V14.8438C8.3125 13.86 9.11003 13.0625 10.0938 13.0625H14.25V2.96875C14.25 1.98499 13.4525 1.1875 12.4688 1.1875H11.875V0.59375C11.875 0.265834 11.6091 0 11.2812 0C10.9534 0 10.6875 0.265834 10.6875 0.59375V1.1875H7.71875V0.59375C7.71875 0.265834 7.45287 0 7.125 0C6.79708 0 6.53125 0.265834 6.53125 0.59375V1.1875H3.5625V0.59375ZM3.5625 6.53125C3.5625 6.20333 3.82833 5.9375 4.15625 5.9375H10.0938C10.4216 5.9375 10.6875 6.20333 10.6875 6.53125C10.6875 6.85917 10.4216 7.125 10.0938 7.125H4.15625C3.82833 7.125 3.5625 6.85917 3.5625 6.53125ZM4.15625 9.5H10.0938C10.4216 9.5 10.6875 9.76588 10.6875 10.0938C10.6875 10.4216 10.4216 10.6875 10.0938 10.6875H4.15625C3.82833 10.6875 3.5625 10.4216 3.5625 10.0938C3.5625 9.76588 3.82833 9.5 4.15625 9.5ZM3.5625 13.6562C3.5625 13.3284 3.82833 13.0625 4.15625 13.0625H6.53125C6.85917 13.0625 7.125 13.3284 7.125 13.6562C7.125 13.9841 6.85917 14.25 6.53125 14.25H4.15625C3.82833 14.25 3.5625 13.9841 3.5625 13.6562Z" fill="#C34439"/>
+                              <path d="M13.8809 14.25H10.0938C9.76588 14.25 9.5 14.5159 9.5 14.8438V18.6309C9.56092 18.5841 9.61899 18.5332 9.67385 18.4783L13.7283 14.4239C13.7832 14.369 13.8341 14.3109 13.8809 14.25Z" fill="#C34439"/>
+                              </svg> Ghi chú
+                          </button>
+                            <input type="button" value="Thanh toán">
+                        </div>
+                    </div>
+                </div>
+                
+        </div>
+        
+    </div>
+    <div class="chuthich clear">
+      <br>
+        * Sau khi thanh toán, đơn hàng của bạn sẽ <br>được  giao trong vòng 20-30 phút
+    </div>
+</div>
+<script>
+    function toggleNguoiNhan() {
+      var nguoinhanSection = document.getElementById("nguoinhan_section");
+      var checkboxDiachi = document.getElementById("checkbox_diachi");
+      if (checkboxDiachi.checked) {
+        nguoinhanSection.style.display = "block";
+      } else {
+        nguoinhanSection.style.display = "none";
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const firstItem = document.querySelector('.menucon ul li:first-child');
+      firstItem.classList.add('ghim');
+    });
+    const menuItems = document.querySelectorAll('.menucon ul li');
+    menuItems.forEach(item => {
+      item.addEventListener('click', function() {
+        menuItems.forEach(item => item.classList.remove('ghim'));
+        this.classList.add('ghim');
+      });
+    });
+  </script>

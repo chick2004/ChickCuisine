@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .input-container {
+    position: relative;
+    display: inline-block;
+}
+
+input[type="text"] {
+    padding-right: 30px; /* Để tạo không gian cho hình ảnh */
+    box-sizing: border-box; /* Để padding được tính trong kích thước tổng cộng của input */
+}
+
+button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px; /* Điều chỉnh padding theo nhu cầu của bạn */
+    background-color: #f0f0f0; /* Màu nền của nút */
+    border: none;
+    cursor: pointer;
+}
+
+button img {
+    width: 20px; /* Kích thước của hình ảnh */
+    height: auto; /* Giữ tỷ lệ khung hình */
+}
+
+    </style>
+</head>
+<body>
+    <!-- <div class="soluong">
+        <button onclick="decreaseValue()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+            </svg>
+        </button>
+        
+        <input type="text" name="soluong" class="soluong-input" value="1">
+        
+        <button onclick="increaseValue()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+        </button>
+    </div>
+    
+    <script>
+        function decreaseValue() {
+            var inputElement = document.querySelector('.soluong-input');
+            var currentValue = parseInt(inputElement.value, 10);
+            
+            if (currentValue > 1) {
+                inputElement.value = currentValue - 1;
+            }
+        }
+    
+        function increaseValue() {
+            var inputElement = document.querySelector('.soluong-input');
+            var currentValue = parseInt(inputElement.value, 10);
+    
+            inputElement.value = currentValue + 1;
+        }
+    </script> -->
+
+
+
+
+
+        <form action="/your-action" method="post">
+    <div class="input-container">
+        <input type="text" name="yourInput" placeholder="Nhập nội dung...">
+        <button type="submit">
+            <img src="your-image.jpg" alt="Gửi">
+        </button>
+    </div>
+</form>
+
+
+    
+</body>
+</html>

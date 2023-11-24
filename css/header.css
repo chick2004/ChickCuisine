@@ -1,0 +1,66 @@
+header {
+  height: 70px;
+  width: 100%;
+  padding: 10px 50px;
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 20% 30% 40% 10%;
+  position: absolute;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%);
+}
+
+header .logo {
+  height: 50px;
+}
+header .search-box {
+  border: 1px solid var(--gray);
+  padding: 5px 10px;
+  height: 30px;
+  border-radius: 15px;
+}
+header .search-box>* {
+  margin: auto;
+  vertical-align: middle;
+}
+header .search-box input {
+  outline: none;
+  border: none;
+  background-color: unset;
+  color: white;
+}
+header .search-box input::placeholder {
+  color: white;
+}
+header .menu {
+  text-align: center;
+  
+}
+header .menu>a {
+  display: inline-block;
+  margin: 0px 10px;
+  text-decoration: none;
+  color: white;
+}
+header .menu>a:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+header .account {
+  text-align: center;
+  background-color: var(--red);
+  padding: 5px;
+  border-radius: 5px;
+}
+header .account:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+  cursor: pointer;
+}
+header .account>* {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0px 5px;
+  color: white;
+}

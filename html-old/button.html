@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- css soluong -->
+    <style>
+        .soluong{
+            display: flex;
+        }
+        .soluong > input{
+            width: 60px;
+            border: 1px solid rgb(188, 188, 188);
+            border-radius: 3px;
+            text-align: center;
+        }
+        .soluong > button{
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+            margin: 0 0.5%;
+            cursor: pointer;
+        }
+        .soluong > button:hover{
+            background-color: #C34439;
+            
+            transition: 0.3s;
+        }
+        .soluong > button:hover svg{
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="soluong">
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                  </svg>              
+            </button>
+            
+            <input type="text" name="soluong" class="soluong">
+    
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>              
+            </button>
+        </div>
+    </div>
+</body>
+</html>
